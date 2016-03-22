@@ -20,6 +20,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    //注册推送
+    [self registerRemoteNotification];
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     [self.window makeKeyAndVisible];
     [self configNavigationBar];
@@ -66,6 +68,7 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     [[EMsgCilent sharedInstance] logout];
+    application.applicationIconBadgeNumber = 0;
 
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
@@ -83,6 +86,103 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+
+//如果注册APNs成功，此代理方法则会返回DeviceToken
+- (void)application:(UIApplication *)application
+didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    //获取device，放在本地
+    NSString *token =
+    [[[[deviceToken description] stringByReplacingOccurrencesOfString:@"<"
+                                                           withString:@""]
+      stringByReplacingOccurrencesOfString:@">"
+      withString:@""]
+     stringByReplacingOccurrencesOfString:@" "
+     withString:@""];
+    [ZXCommens putDeviceToken:token];
+    NSLog(@"token = %@", token);
+}
+
+// 注册deviceToken失败，一般是环境配置或者证书配置有误
+- (void)application:(UIApplication *)application
+didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle:NSLocalizedString(@"apns.failToRegisterApns",
+                                                          Fail to register apns)
+                          message:error.description
+                          delegate:nil
+                          cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
+                          otherButtonTitles:nil];
+    [alert show];
+}
+
+// 注册APNs的方法
+- (void)registerRemoteNotification {
+#if !TARGET_IPHONE_SIMULATOR
+    UIApplication *application = [UIApplication sharedApplication];
+    // iOS8 注册APNS
+    if ([application
+         respondsToSelector:@selector(registerForRemoteNotifications)]) {
+        [application registerForRemoteNotifications];
+        UIUserNotificationType notificationTypes = UIUserNotificationTypeBadge |
+        UIUserNotificationTypeSound;
+        UIUserNotificationSettings *settings =
+        [UIUserNotificationSettings settingsForTypes:notificationTypes
+                                          categories:nil];
+        [application registerUserNotificationSettings:settings];
+    } else {
+        UIRemoteNotificationType notificationTypes = UIRemoteNotificationTypeBadge |
+        UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication]
+         registerForRemoteNotificationTypes:notificationTypes];
+    }
+#endif
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo{
+    
+}
+
+//#ifdef __IPHONE_7_0
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
+{
+    //点击消息tabbar，就把icon的计数清零
+//    UIApplication *application1 = [UIApplication sharedApplication];
+//    application1.applicationIconBadgeNumber = application1.applicationIconBadgeNumber + 1;
+    
+    /**
+     *  sholdPush 设置为YES 不显示友盟弹出框，  设置为NO 显示退推送弹出框
+     */
+    //    [[UMFeedback sharedInstance] setFeedbackViewController:nil shouldPush:NO];
+    
+    //友盟推送
+    //    [UMessage didReceiveRemoteNotification:userInfo];
+    
+    //友盟反馈
+    //    [UMFeedback didReceiveRemoteNotification:userInfo];
+    
+    if (application.applicationState == UIApplicationStateActive) {
+        //程序当前正处于前台
+    }
+    else if(application.applicationState == UIApplicationStateInactive)
+    {
+        //程序处于后台
+        
+    }
+    
+    completionHandler(UIBackgroundFetchResultNoData);
+    if (application.applicationState !=UIApplicationStateActive)
+    {
+        
+    }
+    
+}
+//#endif
+
+- (void)application:(UIApplication *)application
+didReceiveLocalNotification:(UILocalNotification *)notification {
+    
 }
 
 - (void)autoLoginMsgCilent {

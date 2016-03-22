@@ -139,8 +139,26 @@
 
 - (void)logoutAction
 {
-    [[EMsgCilent sharedInstance] logout];
-    [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_STATE object:@NO];
+
+    [self showHudInView:self.view hint:@"提交中"];
+    NSDictionary * dic = [ZXCommens factionaryParams:@{} WithServerAndMethod:@{@"service":@"user",@"method":@"logout"}];
+    ZXWeakSelf;
+    ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
+                                              andRMethod:YTKRequestMethodPost
+                                            andRArgument:dic];
+    [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        [__weakSelf hideHud];
+        if ([request.responseJSONObject[@"success"] integerValue] == 1) {
+            [[EMsgCilent sharedInstance] logout];
+            [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_STATE object:@NO];
+        }
+        else{
+            [__weakSelf showHint:request.responseJSONObject[@"entity"][@"reason"]];
+        }
+    } failure:^(YTKBaseRequest *request) {
+        [__weakSelf hideHud];
+        [__weakSelf showHint:@"退出失败"];
+    }];
 
 }
 

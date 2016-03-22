@@ -337,6 +337,7 @@ didConnectToHost:(NSString *)host
     [envelope setObject:cfuuidString forKey:@"id"];
     [envelope setObject:[NSNumber numberWithInt:type] forKey:@"type"];
     [envelope setObject:self.jid forKey:@"from"];
+    [envelope setObject:ack ? @1 :@0 forKey:@"ack"];
     //单聊,需要在信封添加to字段
     if (type == 1) {
         [envelope setObject:toId forKey:@"to"];
@@ -515,6 +516,7 @@ didConnectToHost:(NSString *)host
     @try {
         [asyncSocket writeData:data withTimeout:-1 tag:0];
     } @catch (NSException *exception) {
+        
     }
 }
 /*断线自动重连*/

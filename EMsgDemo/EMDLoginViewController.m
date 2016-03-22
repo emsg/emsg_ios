@@ -50,8 +50,9 @@
         [MBProgressHUD showError:@"用户名或密码错误" toView:nil];
         return;
     }
+    NSString * deviceToken = [ZXCommens fetchDeviceToken];
     NSDictionary *dic = [[NSDictionary alloc] init];
-    dic = [ZXCommens factionaryParams:@{@"username":_usernameTextField.text,@"password":_passwordTextField.text} WithServerAndMethod:@{@"service":@"user",@"method":@"login"}];
+    dic = [ZXCommens factionaryParams:@{@"username":_usernameTextField.text,@"password":_passwordTextField.text,@"device_token":deviceToken?deviceToken : @""} WithServerAndMethod:@{@"service":@"user",@"method":@"login"}];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPost andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {

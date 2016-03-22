@@ -117,4 +117,16 @@
     return nil;
 }
 
++ (void)putDeviceToken:(NSString *)deviceToken{
+    NSUserDefaults * df = [NSUserDefaults standardUserDefaults];
+    [df setObject:deviceToken forKey:@"deviceToken"];
+    [df synchronize];
+}
+
++ (NSString *)fetchDeviceToken{
+    NSUserDefaults * df = [NSUserDefaults standardUserDefaults];
+    NSString * devictToken = [df valueForKey:@"deviceToken"];
+    return devictToken;
+}
+
 @end

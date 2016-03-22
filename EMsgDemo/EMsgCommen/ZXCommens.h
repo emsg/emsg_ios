@@ -35,5 +35,9 @@
 
 + (NSString *)subQiuYouNo:(NSString *)domainId;
 
++ (void)putDeviceToken:(NSString *)deviceToken;
+
++ (NSString *)fetchDeviceToken;
+
 
 @end
