@@ -246,7 +246,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Pods/CocoaAsyncSocket/Source/RunLoop/AsyncSocket.m"
@@ -278,16 +278,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EMsgDemo/EMsgSDK/EMDEngineManger.m"
-            timestampString = "480418235.457299"
+            filePath = "Pods/CocoaAsyncSocket/Source/GCD/GCDAsyncSocket.m"
+            timestampString = "480419427.380832"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "183"
-            endingLineNumber = "183"
-            landmarkName = "-onSocket:didReadData:withTag:"
+            startingLineNumber = "5155"
+            endingLineNumber = "5155"
+            landmarkName = "-writeData:withTimeout:tag:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

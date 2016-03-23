@@ -170,15 +170,14 @@ withPassword:(NSString *)password
     return YES;
 }
 
-- (void)onSocket:(GCDAsyncSocket *)sock
+
+- (void)socket:(GCDAsyncSocket *)sock
 didConnectToHost:(NSString *)host
             port:(UInt16)port {
     [asyncSocket readDataWithTimeout:-1 tag:0];
 }
 
-- (void)onSocket:(GCDAsyncSocket *)sock
-     didReadData:(NSData *)data
-         withTag:(long)tag {
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
     
     [sock readDataWithTimeout:-1 tag:0];
     PacketType pakcetType = [self isPacketEnd:data];
@@ -426,7 +425,8 @@ didConnectToHost:(NSString *)host
     }
 }
 
-- (void)onSocket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
+
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
     
     if (_delegate && [_delegate respondsToSelector:@selector(
                                                              didSendMessageSuccessed:)]) //发送数据成功
@@ -434,12 +434,13 @@ didConnectToHost:(NSString *)host
         [_delegate didSendMessageSuccessed:tag];
     }
 }
-- (void)onSocket:(GCDAsyncSocket *)sock willDisconnectWithError:(NSError *)err {
+- (void)socket:(GCDAsyncSocket *)sock willDisconnectWithError:(NSError *)err {
     if (_delegate && [_delegate respondsToSelector:@selector(willDisconnectWithError:)]) {
         [_delegate willDisconnectWithError:err];
     }
 }
-- (void)onSocketDidDisconnect:(GCDAsyncSocket *)sock {
+
+- (void)socketDidSecure:(GCDAsyncSocket *)sock {
     NSLog(@"sock = %@", sock);
     if (hasAuth) //开启断线重连
     {
@@ -500,7 +501,7 @@ didConnectToHost:(NSString *)host
     [root setObject:envelope forKey:@"envelope"];
     
     NSString *sendcontent =
-    [NSString stringWithFormat:@"%@%@", [root mj_JSONString], @"\\\\01"];
+    [NSString stringWithFormat:@"%@%@", [root mj_JSONString], END_TAG];
     NSData *data = [sendcontent dataUsingEncoding:NSUTF8StringEncoding];
     
     @try {
