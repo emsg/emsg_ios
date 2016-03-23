@@ -29,7 +29,7 @@
 @interface QYQChatController () <
 UITableViewDelegate, UITableViewDataSource, UITextViewDelegate,
 UINavigationControllerDelegate, UIImagePickerControllerDelegate,
-ZBMessageShareMenuViewDelegate, DXFaceDelegate,EMsgClientProtocol,SRRefreshDelegate> {
+ZBMessageShareMenuViewDelegate, DXFaceDelegate,SRRefreshDelegate> {
     double animationDuration; //键盘的移动时间
     CGRect keyboardRect;      //键盘的frame
     CGRect sendBeforFrame;
@@ -275,6 +275,7 @@ ZBMessageShareMenuViewDelegate, DXFaceDelegate,EMsgClientProtocol,SRRefreshDeleg
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.edgesForExtendedLayout = UIRectEdgeNone;
+    self.navigationController.interactivePopGestureRecognizer.delaysTouchesBegan=NO;
     isFirstIn = NO;
     _loadMessageIndexString = @"0";
     chatArray = [NSMutableArray array];

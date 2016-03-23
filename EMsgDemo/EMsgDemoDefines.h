@@ -20,8 +20,8 @@
 #import "UIView+LayoutMethods.h"
 
 #define Host_Server @"http://180.76.153.246:84/request/"
-#define Server_File_Host @"http://fileserver.qiuyouzone.com/fileserver/get/"
-#define File_Host @"http://fileserver.qiuyouzone.com/fileserver/upload/"
+#define Server_File_Host @"http://fileserver.lczybj.com/fileserver/get/"
+#define File_Host @"http://fileserver.lczybj.com/fileserver/upload/"
 
 #define RGBACOLOR(r,g,b,a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)]
 #define QYQCOLOR(r,g,b) RGBACOLOR(r,g,b,1)

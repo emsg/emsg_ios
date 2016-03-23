@@ -170,11 +170,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMsgDemo/EMsgSDK/EMsgCilent.m"
-            timestampString = "480356538.675085"
+            timestampString = "480411970.458049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "296"
-            endingLineNumber = "296"
+            startingLineNumber = "284"
+            endingLineNumber = "284"
             landmarkName = "-onSocket:didReadData:withTag:"
             landmarkType = "5">
          </BreakpointContent>
@@ -186,11 +186,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMsgDemo/EMsgSDK/EMsgCilent.m"
-            timestampString = "480355788.901436"
+            timestampString = "480411970.458049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "292"
-            endingLineNumber = "292"
+            startingLineNumber = "288"
+            endingLineNumber = "288"
             landmarkName = "-onSocket:didReadData:withTag:"
             landmarkType = "5">
          </BreakpointContent>
@@ -202,12 +202,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMsgDemo/EMsgSDK/EMsgCilent.m"
-            timestampString = "480357096.451304"
+            timestampString = "480411970.458049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "591"
-            endingLineNumber = "591"
-            landmarkName = "-sendConnectHeart"
+            startingLineNumber = "323"
+            endingLineNumber = "323"
+            landmarkName = "-onSocket:didReadData:withTag:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -218,12 +218,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMsgDemo/EMsgSDK/EMsgCilent.m"
-            timestampString = "480357096.451304"
+            timestampString = "480411970.458049"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "588"
-            endingLineNumber = "588"
-            landmarkName = "-sendConnectHeart"
+            startingLineNumber = "338"
+            endingLineNumber = "338"
+            landmarkName = "-onSocket:didReadData:withTag:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -233,29 +233,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EMsgDemo/EMsgSDK/EMsgCilent.m"
-            timestampString = "480356916.105088"
+            filePath = "EMsgDemo/AppDelegate.m"
+            timestampString = "480411966.198347"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
-            landmarkName = "-sendMessageWithToId:withTargetType:isAck:withContent:withAttrs:withMessageMark:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EMsgDemo/EMsgSDK/EMsgCilent.m"
-            timestampString = "480356920.695872"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
-            landmarkName = "-sendMessageWithToId:withTargetType:isAck:withContent:withAttrs:withMessageMark:"
+            startingLineNumber = "194"
+            endingLineNumber = "194"
+            landmarkName = "-autoLoginMsgCilent"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -13,7 +13,6 @@
 #import "FMDBManger.h"
 
 
-static EMsgCilent *shareEMsgClient = nil;
 
 @interface EMsgCilent(){
     /**
@@ -38,15 +37,44 @@ static EMsgCilent *shareEMsgClient = nil;
 
 @implementation EMsgCilent
 
-+ (instancetype)sharedInstance {
+//+ (instancetype)sharedInstance {
+//    static EMsgCilent *shareEMsgClient = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        shareEMsgClient = [[self alloc] init];
+//        shareEMsgClient.isLogOut = YES;
+//        [shareEMsgClient registerNetWorkStatus];
+//        
+//    });
+//    return shareEMsgClient;
+//}
+
+
+static EMsgCilent *_instance;
+
++ (instancetype)allocWithZone:(struct _NSZone *)zone
+{
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        shareEMsgClient = [[EMsgCilent alloc] init];
-        shareEMsgClient.isLogOut = YES;
-        [shareEMsgClient registerNetWorkStatus];
-        
+        _instance = [super allocWithZone:zone];
     });
-    return shareEMsgClient;
+    return _instance;
+}
+
++ (instancetype)sharedInstance
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        _instance = [[self alloc] init];
+        _instance.isLogOut = YES;
+        [_instance registerNetWorkStatus];
+    });
+    return _instance;
+}
+
+- (id)copyWithZone:(NSZone *)zone
+{
+    return _instance;
 }
 
 - (void)reachabilityChanged:(NSNotification *)note {
@@ -109,7 +137,7 @@ static EMsgCilent *shareEMsgClient = nil;
 - (void)logout {
     
     [self closeSocket];
-    [shareEMsgClient setIsLogOut:YES];
+    [self setIsLogOut:YES];
 #pragma mark -- 即使退出登录一样调用网络检测,因为,退出依然可以使用APP
     //    [hostReach stopNotifier];
     
@@ -240,7 +268,7 @@ didConnectToHost:(NSString *)host
             if (result != nil && [result isEqual:@"ok"]) //登陆成功
             {
                 hasAuth = YES;
-                [shareEMsgClient setIsLogOut:NO];
+                [self setIsLogOut:NO];
                 [self sendHeartPacket]; //发送心跳包
                 if (_delegate && [_delegate respondsToSelector:@selector(didAuthSuccessed)]) {
                     [_delegate didAuthSuccessed];
@@ -513,6 +541,8 @@ didConnectToHost:(NSString *)host
     NSString *sendcontent =
     [NSString stringWithFormat:@"%@%@", [root mj_JSONString], END_TAG];
     NSData *data = [sendcontent dataUsingEncoding:NSUTF8StringEncoding];
+    
+    NSLog(@"asyn = %@",asyncSocket);
     @try {
         [asyncSocket writeData:data withTimeout:-1 tag:0];
     } @catch (NSException *exception) {

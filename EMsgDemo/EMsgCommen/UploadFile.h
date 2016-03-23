@@ -11,8 +11,8 @@
 #import "AFHTTPRequestOperationManager.h"
 typedef void(^audioBlock)(NSDictionary *audioDict);
 /**  文件服务器 AppID APPKey*/
-#define FILE_SERVER_APP_ID @"ball"
-#define FILE_SERVER_APP_KEY @"qwertyuiop"
+#define FILE_SERVER_APP_ID @"test"
+#define FILE_SERVER_APP_KEY @"83bf20e2b20141e098fa6b721f693163"
 
 @interface UploadFile : NSObject
 single_interface(UploadFile)
