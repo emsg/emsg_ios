@@ -25,6 +25,7 @@
 		3E69A3701CA0368D00448F4B /* EMDAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69A36F1CA0368D00448F4B /* EMDAddFriendViewController.m */; };
 		3E69A3731CA039F900448F4B /* EMDAddFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69A3721CA039F900448F4B /* EMDAddFriendTableViewCell.m */; };
 		3E69A3761CA0440E00448F4B /* ZXNotiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69A3751CA0440E00448F4B /* ZXNotiViewController.m */; };
+		3E8162C71CA282FB00F49DB5 /* EMDEngineManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E8162C61CA282FB00F49DB5 /* EMDEngineManger.m */; };
 		3E821C201CA0DCE800DC0FE8 /* EMDNotiManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E821C1F1CA0DCE800DC0FE8 /* EMDNotiManger.m */; };
 		3E821C231CA1217300DC0FE8 /* ZXContactListRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E821C221CA1217300DC0FE8 /* ZXContactListRequest.m */; };
 		3E91E04F1C992DCD006A0BB0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E91E04E1C992DCD006A0BB0 /* main.m */; };
@@ -43,7 +44,6 @@
 		3EFFA0851C9F8E1A00ED714E /* EMsgPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFA0761C9F8E1A00ED714E /* EMsgPayload.m */; };
 		3EFFA0861C9F8E1A00ED714E /* EMsgMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFA0781C9F8E1A00ED714E /* EMsgMessage.m */; };
 		3EFFA0871C9F8E1A00ED714E /* EMsgEnvelope.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFA07A1C9F8E1A00ED714E /* EMsgEnvelope.m */; };
-		3EFFA0881C9F8E1A00ED714E /* EMsgCilent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFA07D1C9F8E1A00ED714E /* EMsgCilent.m */; };
 		3EFFA0891C9F8E1A00ED714E /* EMsgAttrs.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFA07F1C9F8E1A00ED714E /* EMsgAttrs.m */; };
 		3EFFA08A1C9F8E1A00ED714E /* ConvertToCommonEmoticonsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFA0811C9F8E1A00ED714E /* ConvertToCommonEmoticonsHelper.m */; };
 		3EFFA08D1C9F8E7700ED714E /* FMDBManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EFFA08C1C9F8E7700ED714E /* FMDBManger.m */; };
@@ -182,6 +182,8 @@
 		3E69A3721CA039F900448F4B /* EMDAddFriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMDAddFriendTableViewCell.m; sourceTree = "<group>"; };
 		3E69A3741CA0440E00448F4B /* ZXNotiViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXNotiViewController.h; sourceTree = "<group>"; };
 		3E69A3751CA0440E00448F4B /* ZXNotiViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXNotiViewController.m; sourceTree = "<group>"; };
+		3E8162C51CA282FB00F49DB5 /* EMDEngineManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMDEngineManger.h; sourceTree = "<group>"; };
+		3E8162C61CA282FB00F49DB5 /* EMDEngineManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMDEngineManger.m; sourceTree = "<group>"; };
 		3E821C1E1CA0DCE800DC0FE8 /* EMDNotiManger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMDNotiManger.h; sourceTree = "<group>"; };
 		3E821C1F1CA0DCE800DC0FE8 /* EMDNotiManger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMDNotiManger.m; sourceTree = "<group>"; };
 		3E821C211CA1217300DC0FE8 /* ZXContactListRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXContactListRequest.h; sourceTree = "<group>"; };
@@ -218,8 +220,6 @@
 		3EFFA07A1C9F8E1A00ED714E /* EMsgEnvelope.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMsgEnvelope.m; sourceTree = "<group>"; };
 		3EFFA07B1C9F8E1A00ED714E /* EMsgEnvelope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMsgEnvelope.h; sourceTree = "<group>"; };
 		3EFFA07C1C9F8E1A00ED714E /* EMsgDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMsgDefine.h; sourceTree = "<group>"; };
-		3EFFA07D1C9F8E1A00ED714E /* EMsgCilent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMsgCilent.m; sourceTree = "<group>"; };
-		3EFFA07E1C9F8E1A00ED714E /* EMsgCilent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMsgCilent.h; sourceTree = "<group>"; };
 		3EFFA07F1C9F8E1A00ED714E /* EMsgAttrs.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMsgAttrs.m; sourceTree = "<group>"; };
 		3EFFA0801C9F8E1A00ED714E /* EMsgAttrs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMsgAttrs.h; sourceTree = "<group>"; };
 		3EFFA0811C9F8E1A00ED714E /* ConvertToCommonEmoticonsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConvertToCommonEmoticonsHelper.m; sourceTree = "<group>"; };
@@ -497,14 +497,14 @@
 				3EFFA07B1C9F8E1A00ED714E /* EMsgEnvelope.h */,
 				3EFFA07A1C9F8E1A00ED714E /* EMsgEnvelope.m */,
 				3EFFA07C1C9F8E1A00ED714E /* EMsgDefine.h */,
-				3EFFA07E1C9F8E1A00ED714E /* EMsgCilent.h */,
-				3EFFA07D1C9F8E1A00ED714E /* EMsgCilent.m */,
 				3EFFA0801C9F8E1A00ED714E /* EMsgAttrs.h */,
 				3EFFA07F1C9F8E1A00ED714E /* EMsgAttrs.m */,
 				3EFFA0821C9F8E1A00ED714E /* ConvertToCommonEmoticonsHelper.h */,
 				3EFFA0811C9F8E1A00ED714E /* ConvertToCommonEmoticonsHelper.m */,
 				3EFFA08B1C9F8E7700ED714E /* FMDBManger.h */,
 				3EFFA08C1C9F8E7700ED714E /* FMDBManger.m */,
+				3E8162C51CA282FB00F49DB5 /* EMDEngineManger.h */,
+				3E8162C61CA282FB00F49DB5 /* EMDEngineManger.m */,
 			);
 			path = EMsgSDK;
 			sourceTree = "<group>";
@@ -993,6 +993,7 @@
 				3EDF82F81C9BEEBA00C52F59 /* UploadFile.m in Sources */,
 				3EFFA1C91C9F927C00ED714E /* amrFileCodec.mm in Sources */,
 				3EDF83011C9BFEFC00C52F59 /* ZXEditSelfInfoViewController.m in Sources */,
+				3E8162C71CA282FB00F49DB5 /* EMDEngineManger.m in Sources */,
 				3EFFA1DE1C9FD38400ED714E /* BrowserUIImageView.m in Sources */,
 				3EFFA1F41C9FE0D900ED714E /* QYQMessageCell.m in Sources */,
 				3EFFA0851C9F8E1A00ED714E /* EMsgPayload.m in Sources */,
@@ -1040,7 +1041,6 @@
 				3EFFA08D1C9F8E7700ED714E /* FMDBManger.m in Sources */,
 				3EFFA13A1C9F906000ED714E /* QYQMessageManagerFaceView.m in Sources */,
 				3E084F401C9A581200F823D9 /* EMDContactViewController.m in Sources */,
-				3EFFA0881C9F8E1A00ED714E /* EMsgCilent.m in Sources */,
 				3EFFA2031C9FE7B000ED714E /* ZXDetailMessageViewController.m in Sources */,
 				3EFFA08A1C9F8E1A00ED714E /* ConvertToCommonEmoticonsHelper.m in Sources */,
 				3E69A3761CA0440E00448F4B /* ZXNotiViewController.m in Sources */,

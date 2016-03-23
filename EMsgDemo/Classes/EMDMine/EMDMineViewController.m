@@ -10,7 +10,7 @@
 #import "UploadFile.h"
 #import "MBProgressHUD+Add.h"
 #import "ZXSettingSelfInfoController.h"
-#import "EMsgCilent.h"
+#import "EMDEngineManger.h"
 
 @interface EMDMineViewController()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
 @property (nonatomic,strong)NSArray * titlesArray;
@@ -149,7 +149,7 @@
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [__weakSelf hideHud];
         if ([request.responseJSONObject[@"success"] integerValue] == 1) {
-            [[EMsgCilent sharedInstance] logout];
+            [[EMDEngineManger sharedInstance] logout];
             [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_STATE object:@NO];
         }
         else{

@@ -14,7 +14,7 @@
 #import "ZBMessageTextView.h"
 #import "DXFaceView.h"
 #import "EMsgMessage.h"
-#import "EMsgCilent.h"
+#import "EMDEngineManger.h"
 #import "MJExtension.h"
 #import "UploadFile.h"
 #import "NSDate+Category.h"
@@ -34,7 +34,7 @@ ZBMessageShareMenuViewDelegate, DXFaceDelegate,SRRefreshDelegate> {
     CGRect keyboardRect;      //键盘的frame
     CGRect sendBeforFrame;
     NSMutableArray *chatArray; //数据源数组
-    EMsgCilent *client;        // scoket通讯类
+    EMDEngineManger *engine;        // scoket通讯类
     NSInteger playTime;
     NSTimer *playTimer;
     BOOL isFirstIn;
@@ -280,7 +280,7 @@ ZBMessageShareMenuViewDelegate, DXFaceDelegate,SRRefreshDelegate> {
     _loadMessageIndexString = @"0";
     chatArray = [NSMutableArray array];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadDataFromDB) name:NEW_MESSAGE object:nil];
-    client = [EMsgCilent sharedInstance];
+    engine = [EMDEngineManger sharedInstance];
     self.player = [[AVAudioPlayer alloc] init];
     [self makeChatter];
     [self setupViews];
@@ -638,7 +638,7 @@ ZBMessageShareMenuViewDelegate, DXFaceDelegate,SRRefreshDelegate> {
 - (void)sendVoiceWithAudioId:(NSString *)audioId time:(NSString *)audioTime
 {
     
-    if ([client isAuthed]) {
+    if ([engine isAuthed]) {
         EMsgMessage *msg = [[EMsgMessage alloc] init];
         msg.isMe = YES;
         EMsgPayload *payload = [[EMsgPayload alloc] init];
@@ -661,7 +661,7 @@ ZBMessageShareMenuViewDelegate, DXFaceDelegate,SRRefreshDelegate> {
         msg.payload = payload;
         msg.envelope = envelope;
         [self isShowDateLabelWithMsg:msg timeSp:timeSp];
-        [client sendMessageWithToId:_chatterID
+        [engine sendMessageWithToId:_chatterID
                      withTargetType:self.isGroup == YES ? GROUPCHAT : SINGLECHAT
                               isAck:YES
                         withContent:[NSString stringWithFormat:@"%@%@",Server_File_Host,audioId]
@@ -890,14 +890,14 @@ shouldChangeTextInRange:(NSRange)range
     ZXUser *userInfoModel = [ZXCommens fetchUser];
     if (userInfoModel.token) {
         //异步登陆账号
-        if (![client isAuthed]) {
+        if (![engine isAuthed]) {
             NSString *username =
             [NSString stringWithFormat:@"%@@%@/%@", userInfoModel.uid,
              userInfoModel.domain,
              [ZXCommens creatMSTimastmap]];
             
             BOOL successed =
-            [client auth:username
+            [engine auth:username
             withPassword:userInfoModel.token
                 withHost:userInfoModel.host
                 withPort:[userInfoModel.port integerValue]];
@@ -907,7 +907,7 @@ shouldChangeTextInRange:(NSRange)range
                 
             }
             else { //连接失败
-                [client autoReconnect];
+                [engine autoReconnect];
             }
         }
     }
@@ -921,7 +921,7 @@ shouldChangeTextInRange:(NSRange)range
     self.mainTab.transform =
     CGAffineTransformMakeTranslation(0, -(self.sendView.height - 43));
     
-    if ([client isAuthed]) {
+    if ([engine isAuthed]) {
         if ([self.textV.text isEqualToString:@""]) {
             [self showHint:@"输入内容不能为空"];
             return;
@@ -955,7 +955,7 @@ shouldChangeTextInRange:(NSRange)range
 
         
         NSMutableDictionary * attrsDic = [[NSMutableDictionary alloc] initWithDictionary:[msg.payload.attrs mj_keyValues]];
-        [client sendMessageWithToId:_chatterID
+        [engine sendMessageWithToId:_chatterID
                      withTargetType:self.isGroup == YES ? GROUPCHAT : SINGLECHAT
                               isAck:YES
                         withContent:self.textV.text
@@ -972,7 +972,7 @@ shouldChangeTextInRange:(NSRange)range
 #pragma mark - 发送位置
 - (void)sendGeoMessage {
 
-    if ([client isAuthed]) {
+    if ([engine isAuthed]) {
         EMsgMessage *msg = [[EMsgMessage alloc] init];
         msg.isMe = YES;
         EMsgPayload *payload = [[EMsgPayload alloc] init];
@@ -994,7 +994,7 @@ shouldChangeTextInRange:(NSRange)range
                             stringWithFormat:@"%ld", (long)[[NSDate date] timeIntervalSince1970]];
         [self isShowDateLabelWithMsg:msg timeSp:timeSp];
 
-        [client sendMessageWithToId:_chatterID
+        [engine sendMessageWithToId:_chatterID
                      withTargetType:self.isGroup == YES ? GROUPCHAT : SINGLECHAT
                               isAck:YES
                         withContent:payload.content
@@ -1046,7 +1046,7 @@ shouldChangeTextInRange:(NSRange)range
 - (void)sendImageMessage:(UIImage *)image withImageId:(NSString *)urlId {
 
     
-    if ([client isAuthed]) {
+    if ([engine isAuthed]) {
         EMsgMessage *msg = [[EMsgMessage alloc] init];
         msg.isMe = YES;
         EMsgPayload *payload = [[EMsgPayload alloc] init];
@@ -1070,7 +1070,7 @@ shouldChangeTextInRange:(NSRange)range
         msg.envelope = envelope;
 
         [self isShowDateLabelWithMsg:msg timeSp:timeSp];
-        [client sendMessageWithToId:_chatterID
+        [engine sendMessageWithToId:_chatterID
                      withTargetType:self.isGroup == YES ? GROUPCHAT : SINGLECHAT
                               isAck:YES
                         withContent:[self imageDataToString:image]

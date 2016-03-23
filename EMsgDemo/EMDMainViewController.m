@@ -10,11 +10,11 @@
 #import "EMDContactViewController.h"
 #import "EMDConversationViewController.h"
 #import "EMDMineViewController.h"
-#import "EMsgCilent.h"
+#import "EMDEngineManger.h"
 #import <AudioToolbox/AudioToolbox.h>
 
 
-@interface EMDMainViewController ()<EMsgClientProtocol>
+@interface EMDMainViewController ()<EMDEngineMangerDelegate>
 {
     EMDContactViewController * contactVC;
     EMDConversationViewController * conversationVC;
@@ -148,8 +148,8 @@
 
 - (void)configObserver{
     
-    EMsgCilent * emsgCilent = [EMsgCilent sharedInstance];
-    emsgCilent.delegate = self;
+    EMDEngineManger * engine = [EMDEngineManger sharedInstance];
+    engine.delegate = self;
     
     [[NSNotificationCenter defaultCenter]
      addObserver:self

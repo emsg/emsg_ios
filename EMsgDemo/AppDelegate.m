@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 #import "EMDMainViewController.h"
 #import "EMDLoginViewController.h"
-#import "EMsgCilent.h"
+#import "EMDEngineManger.h"
 
 @interface AppDelegate ()
 
@@ -68,7 +68,7 @@
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
-    [[EMsgCilent sharedInstance] logout];
+    [[EMDEngineManger sharedInstance] logout];
     application.applicationIconBadgeNumber = 0;
 
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
@@ -190,15 +190,15 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     ZXUser *userInfoModel = [ZXCommens fetchUser];
     if (userInfoModel.token) {
         //异步登陆账号
-        EMsgCilent *client = [EMsgCilent sharedInstance];
-        if (![client isAuthed]) {
+        EMDEngineManger * engine = [EMDEngineManger sharedInstance];
+        if (![engine isAuthed]) {
             NSString *username =
             [NSString stringWithFormat:@"%@@%@/%@", userInfoModel.uid,
              userInfoModel.domain,
              [ZXCommens creatMSTimastmap]];
             
             BOOL successed =
-            [client auth:username
+            [engine auth:username
             withPassword:userInfoModel.token
                 withHost:userInfoModel.host
                 withPort:[userInfoModel.port integerValue]];
@@ -207,7 +207,7 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
             {
                 
             } else { //连接失败
-                [client autoReconnect];
+                [engine autoReconnect];
             }
         }
     }

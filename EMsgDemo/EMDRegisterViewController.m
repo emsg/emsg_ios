@@ -8,7 +8,7 @@
 
 #import "EMDRegisterViewController.h"
 #import "MBProgressHUD+Add.h"
-#import "EMsgCilent.h"
+#import "EMDEngineManger.h"
 
 @interface EMDRegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameTextField;
@@ -154,15 +154,15 @@
     ZXUser *userInfoModel = [ZXCommens fetchUser];
     if (userInfoModel.token) {
         //异步登陆账号
-        EMsgCilent *client = [EMsgCilent sharedInstance];
-        if (![client isAuthed]) {
+        EMDEngineManger *engine = [EMDEngineManger sharedInstance];
+        if (![engine isAuthed]) {
             NSString *username =
             [NSString stringWithFormat:@"%@@%@/%@", userInfoModel.uid,
              userInfoModel.domain,
              [ZXCommens creatMSTimastmap]];
             
             BOOL successed =
-            [client auth:username
+            [engine auth:username
             withPassword:userInfoModel.token
                 withHost:userInfoModel.host
                 withPort:[userInfoModel.port integerValue]];
@@ -171,7 +171,7 @@
             {
                 
             } else { //连接失败
-                [client autoReconnect];
+                [engine autoReconnect];
             }
         }
     }

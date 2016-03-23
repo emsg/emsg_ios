@@ -9,7 +9,7 @@
 #import "EMDLoginViewController.h"
 #import "MBProgressHUD+Add.h"
 #import "EMDRegisterViewController.h"
-#import "EMsgCilent.h"
+#import "EMDEngineManger.h"
 
 @interface EMDLoginViewController ()
 
@@ -52,7 +52,7 @@
     }
     NSString * deviceToken = [ZXCommens fetchDeviceToken];
     NSDictionary *dic = [[NSDictionary alloc] init];
-    dic = [ZXCommens factionaryParams:@{@"username":_usernameTextField.text,@"password":_passwordTextField.text,@"device_token":deviceToken?deviceToken : @""} WithServerAndMethod:@{@"service":@"user",@"method":@"login"}];
+    dic = [ZXCommens factionaryParams:@{@"username":_usernameTextField.text,@"password":_passwordTextField.text,@"device_token":deviceToken ? deviceToken : @""} WithServerAndMethod:@{@"service":@"user",@"method":@"login"}];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPost andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
@@ -88,15 +88,15 @@
     ZXUser *userInfoModel = [ZXCommens fetchUser];
     if (userInfoModel.token) {
         //异步登陆账号
-        EMsgCilent *client = [EMsgCilent sharedInstance];
-        if (![client isAuthed]) {
+        EMDEngineManger *engine = [EMDEngineManger sharedInstance];
+        if (![engine isAuthed]) {
             NSString *username =
             [NSString stringWithFormat:@"%@@%@/%@", userInfoModel.uid,
              userInfoModel.domain,
              [ZXCommens creatMSTimastmap]];
             
             BOOL successed =
-            [client auth:username
+            [engine auth:username
             withPassword:userInfoModel.token
                 withHost:userInfoModel.host
                 withPort:[userInfoModel.port integerValue]];
@@ -105,7 +105,7 @@
             {
                 
             } else { //连接失败
-                [client autoReconnect];
+                [engine autoReconnect];
             }
         }
     }

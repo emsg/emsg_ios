@@ -1,80 +1,41 @@
 //
-//  EMsgCilent.m
-//  EmsClientDemo
+//  EMDEngineManger.m
+//  EMsgDemo
 //
-//  Created by QYQ-Hawk on 15/9/23.
-//  Copyright (c) 2015年 cyt. All rights reserved.
+//  Created by Hawk on 16/3/23.
+//  Copyright © 2016年 鹰. All rights reserved.
 //
 
-#import "EMsgCilent.h"
+#import "EMDEngineManger.h"
 #import "AFNetworking.h"
 #import "Reachability.h"
 #import "MJExtension.h"
 #import "FMDBManger.h"
 
-
-
-@interface EMsgCilent(){
-    /**
-     *  自动重连
-     */
+@interface EMDEngineManger()<AsyncSocketDelegate>{
+    NSMutableData *packetdata;
+    BOOL hasAuth;
+    BOOL isNetWorkAvailable;
     NSTimer *recnnecttimer;
-    /**
-     *  心跳
-     */
     NSTimer *hearttimer;
-    /**
-     *  Socket单例
-     */
     AsyncSocket *asyncSocket;
-    /**
-     *  网络连接状态
-     */
     Reachability *hostReach;
 }
 @end
 
+@implementation EMDEngineManger
 
-@implementation EMsgCilent
+//socket 通信唯一连接,使用的单例模式
 
-//+ (instancetype)sharedInstance {
-//    static EMsgCilent *shareEMsgClient = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        shareEMsgClient = [[self alloc] init];
-//        shareEMsgClient.isLogOut = YES;
-//        [shareEMsgClient registerNetWorkStatus];
-//        
-//    });
-//    return shareEMsgClient;
-//}
-
-
-static EMsgCilent *_instance;
-
-+ (instancetype)allocWithZone:(struct _NSZone *)zone
-{
++ (instancetype)sharedInstance {
+    static EMDEngineManger *_engine = nil;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        _instance = [super allocWithZone:zone];
+        _engine = [[self alloc] init];
+        _engine.isLogOut = YES;
+        [_engine registerNetWorkStatus];
     });
-    return _instance;
-}
-
-+ (instancetype)sharedInstance
-{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        _instance = [[self alloc] init];
-        _instance.isLogOut = YES;
-        [_instance registerNetWorkStatus];
-    });
-    return _instance;
-}
-
-- (id)copyWithZone:(NSZone *)zone
-{
-    return _instance;
+    return _engine;
 }
 
 - (void)reachabilityChanged:(NSNotification *)note {
@@ -539,10 +500,9 @@ didConnectToHost:(NSString *)host
     [root setObject:envelope forKey:@"envelope"];
     
     NSString *sendcontent =
-    [NSString stringWithFormat:@"%@%@", [root mj_JSONString], END_TAG];
+    [NSString stringWithFormat:@"%@%@", [root mj_JSONString], @"\\\\01"];
     NSData *data = [sendcontent dataUsingEncoding:NSUTF8StringEncoding];
     
-    NSLog(@"asyn = %@",asyncSocket);
     @try {
         [asyncSocket writeData:data withTimeout:-1 tag:0];
     } @catch (NSException *exception) {

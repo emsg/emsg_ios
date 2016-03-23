@@ -57,7 +57,9 @@
     NSMutableDictionary * rDic = [[NSMutableDictionary alloc] initWithDictionary:task];
     rDic[@"sn"] = [ZXCommens creatUUID];
     ZXUser * user = [ZXCommens fetchUser];
-    rDic[@"token"] = user.token;
+    if (user) {
+        rDic[@"token"] = user.token; 
+    }
     if (params) {
         rDic[@"params"] = params;
     }
