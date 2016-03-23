@@ -19,12 +19,6 @@ typedef void(^resultCount)(NSInteger count);
 @property(nonatomic, strong) FMDatabase *db;
 @property(nonatomic, strong) NSString *database_path;
 
-/**插入一条搜索历史*/
-- (void)insertData:(NSString *)historyString;
-/**删除所有的搜索历史*/
-- (void)deleteAllData;
-/**查询出所有的搜索历史*/
-- (NSMutableArray *)selectAllData;
 
 /**聊天记录 表*/
 /**插入一条聊天消息*/

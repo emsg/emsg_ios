@@ -217,38 +217,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EMsgDemo/EMDLoginViewController.m"
-            timestampString = "480416484.508762"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "57"
-            endingLineNumber = "57"
-            landmarkName = "-loginAction:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EMsgDemo/AppDelegate.m"
-            timestampString = "480416981.356206"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "-autoLoginMsgCilent"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Pods/CocoaAsyncSocket/Source/RunLoop/AsyncSocket.m"
             timestampString = "480417164.55791"
             startingColumnNumber = "9223372036854775807"
@@ -297,29 +265,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EMsgDemo/EMsgSDK/EMDEngineManger.m"
-            timestampString = "480420351.638888"
+            filePath = "EMsgDemo/Classes/QYQChatMVC/ZXDetailMessageViewController.m"
+            timestampString = "480422645.23263"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "419"
-            endingLineNumber = "419"
-            landmarkName = "-sendMessageWithToId:withTargetType:isAck:withContent:withAttrs:withMessageMark:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "EMsgDemo/EMsgSDK/EMDEngineManger.m"
-            timestampString = "480420356.497603"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "421"
-            endingLineNumber = "421"
-            landmarkName = "-sendMessageWithToId:withTargetType:isAck:withContent:withAttrs:withMessageMark:"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-sendFriendApply"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

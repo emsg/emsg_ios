@@ -35,7 +35,7 @@
     [[UINavigationBar appearance] setBarTintColor:BASE_COLOR];
     [[UINavigationBar appearance] setTintColor:RGBACOLOR(245, 245, 245, 1)];  
     [[UINavigationBar appearance] setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:RGBACOLOR(245, 245, 245, 1), NSForegroundColorAttributeName, [UIFont fontWithName:@ "HelveticaNeue-CondensedBlack" size:19.0], NSFontAttributeName, nil]];
+     [NSDictionary dictionaryWithObjectsAndKeys:RGBACOLOR(245, 245, 245, 1), NSForegroundColorAttributeName, [UIFont systemFontOfSize:19.f], NSFontAttributeName, nil]];
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 }
 
@@ -102,7 +102,6 @@ didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
      stringByReplacingOccurrencesOfString:@" "
      withString:@""];
     [ZXCommens putDeviceToken:token];
-    NSLog(@"token = %@", token);
 }
 
 // 注册deviceToken失败，一般是环境配置或者证书配置有误
@@ -195,7 +194,7 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
             NSString *username =
             [NSString stringWithFormat:@"%@@%@/%@", userInfoModel.uid,
              userInfoModel.domain,
-             [ZXCommens creatMSTimastmap]];
+             userInfoModel.uid];
             
             BOOL successed =
             [engine auth:username

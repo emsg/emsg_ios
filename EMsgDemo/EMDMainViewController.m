@@ -14,7 +14,7 @@
 #import <AudioToolbox/AudioToolbox.h>
 
 
-@interface EMDMainViewController ()<EMDEngineMangerDelegate>
+@interface EMDMainViewController ()<EMDEngineMangerDelegate,UIAlertViewDelegate>
 {
     EMDContactViewController * contactVC;
     EMDConversationViewController * conversationVC;
@@ -107,7 +107,11 @@
 }
 
 - (void)didKilledByServer{
-    
+    //将登陆状态置成为登陆
+    [ZXCommens putLoginState:NO];
+    [ZXCommens deleteUserInfo];
+    UIAlertView * al = [[UIAlertView alloc] initWithTitle:@"提示" message:@"您的账号已经在别处登录" delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+    [al show];
 }
 
 - (void)playSoundAndVibration:(NSString *)soundName {
@@ -343,6 +347,12 @@
         }
     }
     return message;
+}
+
+#pragma mark -- 
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    [[NSNotificationCenter defaultCenter] postNotificationName:LOGIN_STATE object:@NO];
 }
 
 /*

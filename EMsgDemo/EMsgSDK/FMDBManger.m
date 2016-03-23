@@ -72,9 +72,9 @@ static FMDBManger *_sharedFMDBManger = nil;
                                     tableName, ID, CHAT_ID, CHAT_LAST_MESSAGE, CHAT_TIMESTMAP,CHAT_IS_READ,CHAT_IS_CLICKED];
         BOOL res = [self.db executeUpdate:sqlCreateTable];
         if (!res) {
-            NSLog(@"error when creating db table 1");
+//            NSLog(@"error when creating db table 1");
         } else {
-            NSLog(@"success to creating db table");
+//            NSLog(@"success to creating db table");
         }
     }
     [self.db close];
@@ -116,11 +116,11 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:insertSql];
         
         if (!res) {
-            NSLog(@"error when insert db table 2");
+//            NSLog(@"error when insert db table 2");
             [self.db close];
             return NO;
         } else {
-            NSLog(@"success to insert db table");
+//            NSLog(@"success to insert db table");
             [self.db close];
             return YES;
         }
@@ -152,9 +152,9 @@ static FMDBManger *_sharedFMDBManger = nil;
                                tableName,myString,chatId,message.storeId];
         BOOL res = [self.db executeUpdate:updateSql];
         if (!res) {
-            NSLog(@"error to update data: %@", @"error");
+//            NSLog(@"error to update data: %@", @"error");
         } else {
-            NSLog(@"succ to update data: %@", @"success");
+//            NSLog(@"succ to update data: %@", @"success");
         }
     }
     [self.db close];
@@ -181,9 +181,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delSql];
         
         if (!res) {
-            NSLog(@"error when delete db table 3");
+//            NSLog(@"error when delete db table 3");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -207,9 +207,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delAllChatSql];
         
         if (!res) {
-            NSLog(@"error when delete db table 4");
+//            NSLog(@"error when delete db table 4");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -330,9 +330,9 @@ static FMDBManger *_sharedFMDBManger = nil;
          tableName, ID, CHAT_ID, CHAT_LIST_LAST_MESSAGE,CHAT_LIST_TYPE,CHAT_LIST_TIMESTMAP];
         BOOL res = [self.db executeUpdate:sqlCreateTable];
         if (!res) {
-            NSLog(@"error when creating list db table");
+//            NSLog(@"error when creating list db table");
         } else {
-            NSLog(@"success to creating list db table");
+//            NSLog(@"success to creating list db table");
         }
     }
     [self.db close];
@@ -370,11 +370,11 @@ static FMDBManger *_sharedFMDBManger = nil;
                                myString,message.envelope.type,message.storeId];
         BOOL res = [self.db executeUpdate:insertSql];
         if (!res) {
-            NSLog(@"error to inster data: %@", @"error");
+//            NSLog(@"error to inster data: %@", @"error");
             [self.db close];
             return NO;
         } else {
-            NSLog(@"succ to inster data: %@", @"success");
+//            NSLog(@"succ to inster data: %@", @"success");
             [self.db close];
             return YES;
         }
@@ -401,9 +401,9 @@ static FMDBManger *_sharedFMDBManger = nil;
          tableName, chatId];
         BOOL res = [self.db executeUpdate:insertSql];
         if (!res) {
-            NSLog(@"error to del data: %@", @"error");
+//            NSLog(@"error to del data: %@", @"error");
         } else {
-            NSLog(@"succ to del data: %@", @"success");
+//            NSLog(@"succ to del data: %@", @"success");
         }
     }
     [self.db close];
@@ -536,9 +536,9 @@ static FMDBManger *_sharedFMDBManger = nil;
                                tableName,myString,chatId];
         BOOL res = [self.db executeUpdate:updateSql];
         if (!res) {
-            NSLog(@"error to update data: %@", @"error");
+//            NSLog(@"error to update data: %@", @"error");
         } else {
-            NSLog(@"succ to update data: %@", @"success");
+//            NSLog(@"succ to update data: %@", @"success");
         }
     }
     [self.db close];
@@ -585,9 +585,9 @@ static FMDBManger *_sharedFMDBManger = nil;
                                    tableName,myString,upMessage.storeId];
             BOOL res = [self.db executeUpdate:updateSql];
             if (!res) {
-                NSLog(@"error to update data: %@", @"error");
+//                NSLog(@"error to update data: %@", @"error");
             } else {
-                NSLog(@"succ to update data: %@", @"success");
+//                NSLog(@"succ to update data: %@", @"success");
             }
         }
     }
@@ -611,9 +611,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delAllChatSql];
         
         if (!res) {
-            NSLog(@"error when delete db table");
+//            NSLog(@"error when delete db table");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -636,9 +636,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delAllChatSql];
         
         if (!res) {
-            NSLog(@"error when delete db table");
+//            NSLog(@"error when delete db table");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -661,9 +661,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delAllChatSql];
         
         if (!res) {
-            NSLog(@"error when delete db table");
+//            NSLog(@"error when delete db table");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -686,9 +686,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delAllChatSql];
         
         if (!res) {
-            NSLog(@"error when delete db table");
+//            NSLog(@"error when delete db table");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -710,9 +710,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delAllChatSql];
         
         if (!res) {
-            NSLog(@"error when delete db table");
+//            NSLog(@"error when delete db table");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -735,9 +735,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delAllChatSql];
         
         if (!res) {
-            NSLog(@"error when delete db table");
+//            NSLog(@"error when delete db table");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -759,9 +759,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         BOOL res = [self.db executeUpdate:delAllChatSql];
         
         if (!res) {
-            NSLog(@"error when delete db table");
+//            NSLog(@"error when delete db table");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }
@@ -865,9 +865,9 @@ static FMDBManger *_sharedFMDBManger = nil;
         [NSString stringWithFormat:@"DELETE FROM '%@'",tableName];
         BOOL res = [self.db executeUpdate:delAllChatSql];
         if (!res) {
-            NSLog(@"error when delete db table");
+//            NSLog(@"error when delete db table");
         } else {
-            NSLog(@"success to delete db table");
+//            NSLog(@"success to delete db table");
         }
         [self.db close];
     }

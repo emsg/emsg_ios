@@ -894,7 +894,7 @@ shouldChangeTextInRange:(NSRange)range
             NSString *username =
             [NSString stringWithFormat:@"%@@%@/%@", userInfoModel.uid,
              userInfoModel.domain,
-             [ZXCommens creatMSTimastmap]];
+             userInfoModel.uid];
             
             BOOL successed =
             [engine auth:username
@@ -918,8 +918,7 @@ shouldChangeTextInRange:(NSRange)range
     self.textV.height = 30;
     self.sendView.transform = CGAffineTransformMakeTranslation(0, self.previousTextViewContentHeight - 30);
     self.sendView.height = 40;
-    self.mainTab.transform =
-    CGAffineTransformMakeTranslation(0, -(self.sendView.height - 43));
+    self.mainTab.transform = CGAffineTransformMakeTranslation(0, -(self.sendView.height - 43));
     
     if ([engine isAuthed]) {
         if ([self.textV.text isEqualToString:@""]) {

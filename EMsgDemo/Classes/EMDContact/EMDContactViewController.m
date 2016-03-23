@@ -130,7 +130,7 @@
     
     self.listTable = [[UITableView alloc]
                       initWithFrame:CGRectMake(0, 64, CGRectGetWidth(self.view.frame),
-                                               SCREEN_HEIGHT - 64)
+                                               SCREEN_HEIGHT - 64 - 49)
                       style:UITableViewStyleGrouped];
     self.listTable.delegate = self;
     self.listTable.dataSource = self;

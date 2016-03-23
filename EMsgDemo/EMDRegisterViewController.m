@@ -159,7 +159,7 @@
             NSString *username =
             [NSString stringWithFormat:@"%@@%@/%@", userInfoModel.uid,
              userInfoModel.domain,
-             [ZXCommens creatMSTimastmap]];
+             userInfoModel.uid];
             
             BOOL successed =
             [engine auth:username
