@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "AsyncSocket.h"
+#import "GCDAsyncSocket.h"
 #import "EMsgMessage.h"
 #import "EMsgDefine.h"
 

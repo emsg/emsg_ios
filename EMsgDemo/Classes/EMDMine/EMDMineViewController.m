@@ -12,7 +12,7 @@
 #import "ZXSettingSelfInfoController.h"
 #import "EMDEngineManger.h"
 
-@interface EMDMineViewController()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate>
+@interface EMDMineViewController()<UITableViewDataSource,UITableViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate,EMDEngineMangerDelegate>
 @property (nonatomic,strong)NSArray * titlesArray;
 @property (nonatomic,strong)UIImageView * showHeaderImageView;
 @property (nonatomic,strong)UITableView *  menuTableView;
@@ -41,6 +41,7 @@
     _menuTableView.sectionHeaderHeight = 10.0;
     _menuTableView.separatorStyle = UITableViewCellSeparatorStyleSingleLine;
     [self.view addSubview:_menuTableView];
+    
 }
 
 

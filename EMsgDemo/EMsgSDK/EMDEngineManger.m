@@ -12,13 +12,13 @@
 #import "MJExtension.h"
 #import "FMDBManger.h"
 
-@interface EMDEngineManger()<AsyncSocketDelegate>{
+@interface EMDEngineManger()<GCDAsyncSocketDelegate>{
     NSMutableData *packetdata;
     BOOL hasAuth;
     BOOL isNetWorkAvailable;
     NSTimer *recnnecttimer;
     NSTimer *hearttimer;
-    AsyncSocket *asyncSocket;
+    GCDAsyncSocket *asyncSocket;
     Reachability *hostReach;
 }
 @end
@@ -141,7 +141,7 @@ withPassword:(NSString *)password
         asyncSocket.delegate = nil;
         asyncSocket = nil;
     }
-    asyncSocket = [[AsyncSocket alloc] initWithDelegate:self];
+    asyncSocket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_main_queue()];
     if (![asyncSocket connectToHost:host
                              onPort:port
                         withTimeout:-1
@@ -170,13 +170,13 @@ withPassword:(NSString *)password
     return YES;
 }
 
-- (void)onSocket:(AsyncSocket *)sock
+- (void)onSocket:(GCDAsyncSocket *)sock
 didConnectToHost:(NSString *)host
             port:(UInt16)port {
     [asyncSocket readDataWithTimeout:-1 tag:0];
 }
 
-- (void)onSocket:(AsyncSocket *)sock
+- (void)onSocket:(GCDAsyncSocket *)sock
      didReadData:(NSData *)data
          withTag:(long)tag {
     
@@ -426,7 +426,7 @@ didConnectToHost:(NSString *)host
     }
 }
 
-- (void)onSocket:(AsyncSocket *)sock didWriteDataWithTag:(long)tag {
+- (void)onSocket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag {
     
     if (_delegate && [_delegate respondsToSelector:@selector(
                                                              didSendMessageSuccessed:)]) //发送数据成功
@@ -434,12 +434,12 @@ didConnectToHost:(NSString *)host
         [_delegate didSendMessageSuccessed:tag];
     }
 }
-- (void)onSocket:(AsyncSocket *)sock willDisconnectWithError:(NSError *)err {
+- (void)onSocket:(GCDAsyncSocket *)sock willDisconnectWithError:(NSError *)err {
     if (_delegate && [_delegate respondsToSelector:@selector(willDisconnectWithError:)]) {
         [_delegate willDisconnectWithError:err];
     }
 }
-- (void)onSocketDidDisconnect:(AsyncSocket *)sock {
+- (void)onSocketDidDisconnect:(GCDAsyncSocket *)sock {
     NSLog(@"sock = %@", sock);
     if (hasAuth) //开启断线重连
     {
