@@ -507,7 +507,7 @@ didConnectToHost:(NSString *)host
     @try {
         [asyncSocket writeData:data withTimeout:-1 tag:0];
     } @catch (NSException *exception) {
-        
+        NSLog(@"exception");
     }
 }
 /*断线自动重连*/
