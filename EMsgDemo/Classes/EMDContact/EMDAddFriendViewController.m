@@ -46,8 +46,8 @@
     self.listTable.sectionFooterHeight = 0;
     [self.view addSubview:_listTable];
     self.listTable.tableFooterView = [[UIView alloc] init];
-//    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeText)];
-//    [self.listTable addGestureRecognizer:tap];
+    //    UITapGestureRecognizer * tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(closeText)];
+    //    [self.listTable addGestureRecognizer:tap];
 }
 
 - (void)configField{
@@ -71,42 +71,42 @@
     //定制自己的风格的 UIBarButtonItem
     UIBarButtonItem* someBarButtonItem= [[UIBarButtonItem alloc] initWithCustomView:backButton];
     self.navigationItem.rightBarButtonItem = someBarButtonItem;
-
+    
 }
 
 - (void)confirm{
     
-//    if (self.field.text.length < 1) {
-//        [MBProgressHUD showError:@"查询内容不能为空" toView:nil];
-//        return;
-//    }
+    if (self.field.text.length < 1) {
+        [MBProgressHUD showError:@"查询内容不能为空" toView:nil];
+        return;
+    }
     
     [self closeText];
     
-//    NSDictionary *dic = [[NSDictionary alloc] init];
-//    dic = [ZXCommens factionaryParams:@{[Tools_F validateEmail:_field.text] ? @"email":@"nickname":_field.text} WithServerAndMethod:@{@"service":@"user",@"method":@"find_user"}];
-//    
-//    [self showHudInView:self.view hint:@""];
+    NSDictionary *dic = nil;
+    dic = [ZXCommens factionaryParams:@{[Tools_F validateEmail:_field.text] ? @"email":@"nickname":_field.text} WithServerAndMethod:@{@"service":@"user",@"method":@"find_user"}];
     
-    ZXRequest *request = [[ZXRequest alloc] initWithRUrl:@"http://ceshi.kejiakeji.com/index.php?m=Newthirdtwo&a=test"
+    [self showHudInView:self.view hint:@""];
+    
+    ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
                                               andRMethod:YTKRequestMethodPost
-                                            andRArgument:@{@"userid":@"aaa",@"token":@"kkkk"}];
+                                            andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [self hideHud];
-//        if ([request.responseJSONObject[@"success"] integerValue] == 1) {
-//            _listArray = request.responseJSONObject[@"entity"][@"user_list"];
-//            [self.listTable reloadData];
-//        }
-//        else{
-//            [self showHint:request.responseJSONObject[@"entity"][@"reason"]];
-//        }
+        if ([request.responseJSONObject[@"success"] integerValue] == 1) {
+            _listArray = request.responseJSONObject[@"entity"][@"user_list"];
+            [self.listTable reloadData];
+        }
+        else{
+            [self showHint:request.responseJSONObject[@"entity"][@"reason"]];
+        }
     } failure:^(YTKBaseRequest *request) {
         [self showHint:@"请求失败"];
     }];
     
 }
 
-#pragma mark -- 
+#pragma mark --
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
     
@@ -122,7 +122,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     EMDAddFriendTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ident];
     if (!cell) {
         cell = [[EMDAddFriendTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
-                                     reuseIdentifier:ident];
+                                                reuseIdentifier:ident];
     }
     NSDictionary * dic = [_listArray objectAtIndex:indexPath.row];
     ZXUser * user = [ZXUser mj_objectWithKeyValues:dic];
@@ -153,13 +153,13 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
