@@ -39,5 +39,5 @@
 
 + (NSString *)fetchDeviceToken;
 
-
++ (BOOL)isNilString:(NSString *)string;
 @end

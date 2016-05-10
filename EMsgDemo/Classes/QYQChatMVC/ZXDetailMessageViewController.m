@@ -25,8 +25,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = BASE_VC_COLOR;
-    [self initView];
+
+    if(self.isFromSearch){
+        [self fetchUserInfo];
+    }
+    else{
+        [self initView];
+    }
+
 }
+
 
 - (void)initView{
     
@@ -97,7 +105,32 @@
         [view addSubview:line];
     }
     return view;
+
+
 }
+
+- (void)fetchUserInfo{
+    
+    NSDictionary *dic = [ZXCommens factionaryParams:@{@"userid":_kUser.uid} WithServerAndMethod:@{@"service":@"user",@"method":@"get_user_info"}];
+    [self showHudInView:self.view hint:@"加载中..."];
+    ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
+                                              andRMethod:YTKRequestMethodPost
+                                            andRArgument:dic];
+    [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
+        [self hideHud];
+        if ([request.responseJSONObject[@"success"] integerValue] == 1) {
+            self.kUser = [ZXUser mj_objectWithKeyValues:request.responseJSONObject[@"entity"][@"user"]];
+            [self initView];
+        }
+        else{
+            [self showHint:@"请求失败"];
+        }
+    } failure:^(YTKBaseRequest *request) {
+        [self hideHud];
+        [self showHint:@"请求失败"];
+    }];
+}
+
 -(void)confirmBut
 {
     if (self.isFromChatVC == YES) {
@@ -119,8 +152,7 @@
     }
 }
 - (void)sendFriendApply{
-    NSDictionary *dic = [[NSDictionary alloc] init];
-    dic = [ZXCommens factionaryParams:@{@"contact_id":_kUser.uid,@"action":@"add"} WithServerAndMethod:@{@"service":@"user",@"method":@"contact"}];
+    NSDictionary *dic = [ZXCommens factionaryParams:@{@"contact_id":_kUser.uid,@"action":@"add"} WithServerAndMethod:@{@"service":@"user",@"method":@"contact"}];
     [self showHudInView:self.view hint:@""];
     ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
                                               andRMethod:YTKRequestMethodPost
@@ -133,7 +165,8 @@
         else{
             [self showHint:request.responseJSONObject[@"entity"][@"reason"]];
         }
-    } failure:^(YTKBaseRequest *request) {
+    } failure:^(YTKBaseRequest *request){
+        [self hideHud];
         [self showHint:@"请求失败"];
     }];
 

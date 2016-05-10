@@ -93,6 +93,17 @@
     _unreadLabel.hidden = YES;
 }
 
+- (void)setGender:(NSString *)gender{
+    if ([gender isEqualToString:@"男"]) {
+        _nickNameLabel.textColor = [UIColor grayColor];
+
+    }
+    else{
+        _nickNameLabel.textColor = QYQCOLOR(246, 153, 183);
+
+    }
+}
+
 -(void)setMessage:(EMsgMessage *)message{
     _message = message;
     

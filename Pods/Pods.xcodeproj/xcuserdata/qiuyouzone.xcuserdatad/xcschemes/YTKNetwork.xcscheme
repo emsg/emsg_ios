@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'A09D4627B8FB7B2C09B68592'
-               BlueprintName = 'YTKNetwork'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libYTKNetwork.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E09065B88A2C2B0418D691B8181F760D"
+               BlueprintName = "YTKNetwork"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libYTKNetwork.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

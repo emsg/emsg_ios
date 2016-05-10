@@ -131,4 +131,18 @@
     return devictToken;
 }
 
++ (BOOL)isNilString:(NSString *)string{
+    if (string == nil || string == NULL) {
+        return YES;
+    }
+    if ([string isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if ([string isEqualToString:@"(null)"] || [string isEqualToString:@"<null>"]) {
+        return YES;
+        
+    }
+    return NO;
+}
+
 @end

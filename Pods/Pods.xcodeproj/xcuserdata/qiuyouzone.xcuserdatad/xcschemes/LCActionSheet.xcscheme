@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '75C3C1B868665CF05EE8AD93'
-               BlueprintName = 'LCActionSheet'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libLCActionSheet.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BBD31B258AB88D877D5D602AE3F16E6B"
+               BlueprintName = "LCActionSheet"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libLCActionSheet.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

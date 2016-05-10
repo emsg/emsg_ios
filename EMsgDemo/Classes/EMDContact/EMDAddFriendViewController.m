@@ -76,30 +76,30 @@
 
 - (void)confirm{
     
-    if (self.field.text.length < 1) {
-        [MBProgressHUD showError:@"查询内容不能为空" toView:nil];
-        return;
-    }
+//    if (self.field.text.length < 1) {
+//        [MBProgressHUD showError:@"查询内容不能为空" toView:nil];
+//        return;
+//    }
     
     [self closeText];
     
-    NSDictionary *dic = [[NSDictionary alloc] init];
-    dic = [ZXCommens factionaryParams:@{[Tools_F validateEmail:_field.text] ? @"email":@"nickname":_field.text} WithServerAndMethod:@{@"service":@"user",@"method":@"find_user"}];
+//    NSDictionary *dic = [[NSDictionary alloc] init];
+//    dic = [ZXCommens factionaryParams:@{[Tools_F validateEmail:_field.text] ? @"email":@"nickname":_field.text} WithServerAndMethod:@{@"service":@"user",@"method":@"find_user"}];
+//    
+//    [self showHudInView:self.view hint:@""];
     
-    [self showHudInView:self.view hint:@""];
-    
-    ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
+    ZXRequest *request = [[ZXRequest alloc] initWithRUrl:@"http://ceshi.kejiakeji.com/index.php?m=Newthirdtwo&a=test"
                                               andRMethod:YTKRequestMethodPost
-                                            andRArgument:dic];
+                                            andRArgument:@{@"userid":@"aaa",@"token":@"kkkk"}];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [self hideHud];
-        if ([request.responseJSONObject[@"success"] integerValue] == 1) {
-            _listArray = request.responseJSONObject[@"entity"][@"user_list"];
-            [self.listTable reloadData];
-        }
-        else{
-            [self showHint:request.responseJSONObject[@"entity"][@"reason"]];
-        }
+//        if ([request.responseJSONObject[@"success"] integerValue] == 1) {
+//            _listArray = request.responseJSONObject[@"entity"][@"user_list"];
+//            [self.listTable reloadData];
+//        }
+//        else{
+//            [self showHint:request.responseJSONObject[@"entity"][@"reason"]];
+//        }
     } failure:^(YTKBaseRequest *request) {
         [self showHint:@"请求失败"];
     }];

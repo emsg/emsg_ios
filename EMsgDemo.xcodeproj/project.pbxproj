@@ -22,6 +22,8 @@
 		3E084F671C9A87E800F823D9 /* EMDLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3E084F651C9A87E800F823D9 /* EMDLoginViewController.xib */; };
 		3E084F6A1C9A8F6200F823D9 /* MBProgressHUD+Add.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E084F691C9A8F6200F823D9 /* MBProgressHUD+Add.m */; };
 		3E084F711C9ABAED00F823D9 /* UIViewController+HUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E084F701C9ABAED00F823D9 /* UIViewController+HUD.m */; };
+		3E0E5A6A1CE08BA500AF9E8C /* ZXNearbyPeopleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E5A691CE08BA500AF9E8C /* ZXNearbyPeopleViewController.m */; };
+		3E0E5A6D1CE08E5200AF9E8C /* ZXBaseRefreshViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E0E5A6C1CE08E5200AF9E8C /* ZXBaseRefreshViewController.m */; };
 		3E69A3701CA0368D00448F4B /* EMDAddFriendViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69A36F1CA0368D00448F4B /* EMDAddFriendViewController.m */; };
 		3E69A3731CA039F900448F4B /* EMDAddFriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69A3721CA039F900448F4B /* EMDAddFriendTableViewCell.m */; };
 		3E69A3761CA0440E00448F4B /* ZXNotiViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E69A3751CA0440E00448F4B /* ZXNotiViewController.m */; };
@@ -34,6 +36,8 @@
 		3E91E0581C992DCD006A0BB0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E91E0561C992DCD006A0BB0 /* Main.storyboard */; };
 		3E91E05A1C992DCD006A0BB0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E91E0591C992DCD006A0BB0 /* Assets.xcassets */; };
 		3E91E05D1C992DCD006A0BB0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E91E05B1C992DCD006A0BB0 /* LaunchScreen.storyboard */; };
+		3EC5D2F01CE17CAE001CC289 /* ZXNearByTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC5D2EF1CE17CAE001CC289 /* ZXNearByTableViewCell.m */; };
+		3EC5D2F31CE1B79B001CC289 /* HawkLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EC5D2F21CE1B79B001CC289 /* HawkLocation.m */; };
 		3EDF82EF1C9BB62A00C52F59 /* EMDRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF82ED1C9BB62A00C52F59 /* EMDRegisterViewController.m */; };
 		3EDF82F01C9BB62A00C52F59 /* EMDRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3EDF82EE1C9BB62A00C52F59 /* EMDRegisterViewController.xib */; };
 		3EDF82F81C9BEEBA00C52F59 /* UploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 3EDF82F71C9BEEBA00C52F59 /* UploadFile.m */; };
@@ -141,6 +145,14 @@
 		3EFFA2211CA0074A00ED714E /* ToolViewEmotion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFA21F1CA0074A00ED714E /* ToolViewEmotion@2x.png */; };
 		3EFFA2221CA0074A00ED714E /* ToolViewEmotion@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFA2201CA0074A00ED714E /* ToolViewEmotion@3x.png */; };
 		C47A84BE29A1E6F27939C220 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A34098D630DFE650C5F6452 /* libPods.a */; };
+		E34BC1719013A52B06B98D69 /* ah_1@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34BC205CE002EAC5CD2169E /* ah_1@2x.png */; };
+		E34BC3F6903925E70C5C620C /* ah_4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34BCB1B45F93BFD3B55EA2C /* ah_4@2x.png */; };
+		E34BC52EFD2A2A1B27B4D0AB /* ah_2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34BC26A35B44920680CB15A /* ah_2@2x.png */; };
+		E34BC692928E1A711D731E06 /* ah_0@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34BCA5DBAC22AC937F985C3 /* ah_0@2x.png */; };
+		E34BCBBBED2CD2CF8154890E /* ah_3@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34BC71CF768A7BCC1E0317C /* ah_3@2x.png */; };
+		E34BCC4722478D48A51FB626 /* ah_6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34BC1D07F518FBEDB0BFFB3 /* ah_6@2x.png */; };
+		E34BCE7342EB651248C05169 /* ah_7@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34BC1E12CA02C697D5A019E /* ah_7@2x.png */; };
+		E34BCF30F2CE93790C685605 /* ah_5@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E34BC52C88BF79915CB4433E /* ah_5@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -176,6 +188,10 @@
 		3E084F691C9A8F6200F823D9 /* MBProgressHUD+Add.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+Add.m"; sourceTree = "<group>"; };
 		3E084F6F1C9ABAED00F823D9 /* UIViewController+HUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+HUD.h"; sourceTree = "<group>"; };
 		3E084F701C9ABAED00F823D9 /* UIViewController+HUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+HUD.m"; sourceTree = "<group>"; };
+		3E0E5A681CE08BA500AF9E8C /* ZXNearbyPeopleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXNearbyPeopleViewController.h; sourceTree = "<group>"; };
+		3E0E5A691CE08BA500AF9E8C /* ZXNearbyPeopleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXNearbyPeopleViewController.m; sourceTree = "<group>"; };
+		3E0E5A6B1CE08E5200AF9E8C /* ZXBaseRefreshViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXBaseRefreshViewController.h; sourceTree = "<group>"; };
+		3E0E5A6C1CE08E5200AF9E8C /* ZXBaseRefreshViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXBaseRefreshViewController.m; sourceTree = "<group>"; };
 		3E69A36E1CA0368D00448F4B /* EMDAddFriendViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMDAddFriendViewController.h; sourceTree = "<group>"; };
 		3E69A36F1CA0368D00448F4B /* EMDAddFriendViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMDAddFriendViewController.m; sourceTree = "<group>"; };
 		3E69A3711CA039F900448F4B /* EMDAddFriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMDAddFriendTableViewCell.h; sourceTree = "<group>"; };
@@ -198,6 +214,10 @@
 		3E91E0591C992DCD006A0BB0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E91E05C1C992DCD006A0BB0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3E91E05E1C992DCD006A0BB0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3EC5D2EE1CE17CAE001CC289 /* ZXNearByTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZXNearByTableViewCell.h; sourceTree = "<group>"; };
+		3EC5D2EF1CE17CAE001CC289 /* ZXNearByTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZXNearByTableViewCell.m; sourceTree = "<group>"; };
+		3EC5D2F11CE1B79B001CC289 /* HawkLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HawkLocation.h; sourceTree = "<group>"; };
+		3EC5D2F21CE1B79B001CC289 /* HawkLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HawkLocation.m; sourceTree = "<group>"; };
 		3EDF82EC1C9BB62A00C52F59 /* EMDRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMDRegisterViewController.h; sourceTree = "<group>"; };
 		3EDF82ED1C9BB62A00C52F59 /* EMDRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMDRegisterViewController.m; sourceTree = "<group>"; };
 		3EDF82EE1C9BB62A00C52F59 /* EMDRegisterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMDRegisterViewController.xib; sourceTree = "<group>"; };
@@ -356,6 +376,14 @@
 		3EFFA2201CA0074A00ED714E /* ToolViewEmotion@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewEmotion@3x.png"; sourceTree = "<group>"; };
 		C31030BEB6E81579470F25D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		D095D436247A9D682073F5C4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		E34BC1D07F518FBEDB0BFFB3 /* ah_6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ah_6@2x.png"; sourceTree = "<group>"; };
+		E34BC1E12CA02C697D5A019E /* ah_7@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ah_7@2x.png"; sourceTree = "<group>"; };
+		E34BC205CE002EAC5CD2169E /* ah_1@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ah_1@2x.png"; sourceTree = "<group>"; };
+		E34BC26A35B44920680CB15A /* ah_2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ah_2@2x.png"; sourceTree = "<group>"; };
+		E34BC52C88BF79915CB4433E /* ah_5@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ah_5@2x.png"; sourceTree = "<group>"; };
+		E34BC71CF768A7BCC1E0317C /* ah_3@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ah_3@2x.png"; sourceTree = "<group>"; };
+		E34BCA5DBAC22AC937F985C3 /* ah_0@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ah_0@2x.png"; sourceTree = "<group>"; };
+		E34BCB1B45F93BFD3B55EA2C /* ah_4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ah_4@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -425,8 +453,27 @@
 				3EFFA1931C9F921600ED714E /* Chat */,
 				3EFFA17A1C9F915300ED714E /* TabbarIcon */,
 				3EFFA14F1C9F910200ED714E /* VoiceAnimation */,
+				E34BCA5DBAC22AC937F985C3 /* ah_0@2x.png */,
+				E34BCB1B45F93BFD3B55EA2C /* ah_4@2x.png */,
+				E34BC1E12CA02C697D5A019E /* ah_7@2x.png */,
+				E34BC71CF768A7BCC1E0317C /* ah_3@2x.png */,
+				E34BC205CE002EAC5CD2169E /* ah_1@2x.png */,
+				E34BC52C88BF79915CB4433E /* ah_5@2x.png */,
+				E34BC1D07F518FBEDB0BFFB3 /* ah_6@2x.png */,
+				E34BC26A35B44920680CB15A /* ah_2@2x.png */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		3E0E5A671CE08AF200AF9E8C /* EMDiscovery */ = {
+			isa = PBXGroup;
+			children = (
+				3E0E5A681CE08BA500AF9E8C /* ZXNearbyPeopleViewController.h */,
+				3E0E5A691CE08BA500AF9E8C /* ZXNearbyPeopleViewController.m */,
+				3EC5D2EE1CE17CAE001CC289 /* ZXNearByTableViewCell.h */,
+				3EC5D2EF1CE17CAE001CC289 /* ZXNearByTableViewCell.m */,
+			);
+			path = EMDiscovery;
 			sourceTree = "<group>";
 		};
 		3E91E0411C992DCD006A0BB0 = {
@@ -523,6 +570,8 @@
 		3E91E0661C992E38006A0BB0 /* EMsgCommen */ = {
 			isa = PBXGroup;
 			children = (
+				3EC5D2F11CE1B79B001CC289 /* HawkLocation.h */,
+				3EC5D2F21CE1B79B001CC289 /* HawkLocation.m */,
 				3EFFA1E21C9FD54200ED714E /* UIImage+Extension.h */,
 				3EFFA1E31C9FD54200ED714E /* UIImage+Extension.m */,
 				3EFFA1DF1C9FD40F00ED714E /* NSDateFormatter+Category.h */,
@@ -564,6 +613,8 @@
 				3E821C1F1CA0DCE800DC0FE8 /* EMDNotiManger.m */,
 				3E821C211CA1217300DC0FE8 /* ZXContactListRequest.h */,
 				3E821C221CA1217300DC0FE8 /* ZXContactListRequest.m */,
+				3E0E5A6B1CE08E5200AF9E8C /* ZXBaseRefreshViewController.h */,
+				3E0E5A6C1CE08E5200AF9E8C /* ZXBaseRefreshViewController.m */,
 			);
 			path = EMsgCommen;
 			sourceTree = "<group>";
@@ -571,6 +622,7 @@
 		3E91E0671C992E49006A0BB0 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				3E0E5A671CE08AF200AF9E8C /* EMDiscovery */,
 				3EFFA0A11C9F906000ED714E /* EMDUI */,
 				3E084F151C9A4E2400F823D9 /* EMDContact */,
 				3E084F161C9A4E2400F823D9 /* EMDConversation */,
@@ -923,6 +975,14 @@
 				3EFFA1AA1C9F921600ED714E /* chat_animation_white1.png in Resources */,
 				3EFFA16E1C9F910200ED714E /* icon_yuyin04@2x.png in Resources */,
 				3EFFA16B1C9F910200ED714E /* icon_yuyin02@3x.png in Resources */,
+				E34BC692928E1A711D731E06 /* ah_0@2x.png in Resources */,
+				E34BC3F6903925E70C5C620C /* ah_4@2x.png in Resources */,
+				E34BCE7342EB651248C05169 /* ah_7@2x.png in Resources */,
+				E34BCBBBED2CD2CF8154890E /* ah_3@2x.png in Resources */,
+				E34BC1719013A52B06B98D69 /* ah_1@2x.png in Resources */,
+				E34BCF30F2CE93790C685605 /* ah_5@2x.png in Resources */,
+				E34BCC4722478D48A51FB626 /* ah_6@2x.png in Resources */,
+				E34BC52EFD2A2A1B27B4D0AB /* ah_2@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -989,6 +1049,7 @@
 				3EFFA09F1C9F8FDA00ED714E /* SRRefreshView.m in Sources */,
 				3EFFA1191C9F906000ED714E /* FacialView.m in Sources */,
 				3E084F2E1C9A523400F823D9 /* ZXBaseTableViewCell.m in Sources */,
+				3EC5D2F01CE17CAE001CC289 /* ZXNearByTableViewCell.m in Sources */,
 				3E69A3731CA039F900448F4B /* EMDAddFriendTableViewCell.m in Sources */,
 				3EDF82F81C9BEEBA00C52F59 /* UploadFile.m in Sources */,
 				3EFFA1C91C9F927C00ED714E /* amrFileCodec.mm in Sources */,
@@ -999,6 +1060,7 @@
 				3EFFA0851C9F8E1A00ED714E /* EMsgPayload.m in Sources */,
 				3E084F2B1C9A523400F823D9 /* ZXRequest.m in Sources */,
 				3E084F431C9A582D00F823D9 /* EMDConversationViewController.m in Sources */,
+				3E0E5A6A1CE08BA500AF9E8C /* ZXNearbyPeopleViewController.m in Sources */,
 				3EFFA1E41C9FD54200ED714E /* UIImage+Extension.m in Sources */,
 				3E91E0551C992DCD006A0BB0 /* ViewController.m in Sources */,
 				3EFFA1471C9F906000ED714E /* UUAVAudioPlayer.m in Sources */,
@@ -1010,6 +1072,7 @@
 				3E084F3D1C9A57CE00F823D9 /* EMDMainViewController.m in Sources */,
 				3EFFA14D1C9F906000ED714E /* ZBMessageShareMenuItem.m in Sources */,
 				3EFFA1321C9F906000ED714E /* QYQChatCell.m in Sources */,
+				3EC5D2F31CE1B79B001CC289 /* HawkLocation.m in Sources */,
 				3E821C231CA1217300DC0FE8 /* ZXContactListRequest.m in Sources */,
 				3EFFA1171C9F906000ED714E /* DXFaceView.m in Sources */,
 				3EDF82EF1C9BB62A00C52F59 /* EMDRegisterViewController.m in Sources */,
@@ -1020,6 +1083,7 @@
 				3EFFA1181C9F906000ED714E /* DXRecordView.m in Sources */,
 				3EFFA0871C9F8E1A00ED714E /* EMsgEnvelope.m in Sources */,
 				3EFFA1DB1C9FD31C00ED714E /* HawkPhotoBrowser.m in Sources */,
+				3E0E5A6D1CE08E5200AF9E8C /* ZXBaseRefreshViewController.m in Sources */,
 				3EFFA20A1C9FF3C400ED714E /* MySortingVC.m in Sources */,
 				3EFFA1331C9F906000ED714E /* QYQChatController.m in Sources */,
 				3EFFA0891C9F8E1A00ED714E /* EMsgAttrs.m in Sources */,

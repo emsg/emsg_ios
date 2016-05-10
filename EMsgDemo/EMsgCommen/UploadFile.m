@@ -78,7 +78,7 @@ single_implementation(UploadFile)
     NSData *voiceData = [fileManager contentsAtPath:dataStr];
     NSDictionary *parameters = @{@"appid":FILE_SERVER_APP_ID,@"appkey":FILE_SERVER_APP_KEY,@"file":voiceData,@"file_type":@"amr"};
     
-    [manager POST:@"http://fileserver.qiuyouzone.com/fileserver/upload/" parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>formData) {
+    [manager POST:FILE_SERVER_HOST parameters:parameters constructingBodyWithBlock:^(id<AFMultipartFormData>formData) {
         NSURL *fileURL = [NSURL fileURLWithPath:dataStr];
         
         

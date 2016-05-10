@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '0009C441753D65574E8DCADD'
-               BlueprintName = 'AFDownloadRequestOperation'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'libAFDownloadRequestOperation.a'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "B3C760711B585710870482548EF04B3F"
+               BlueprintName = "AFDownloadRequestOperation"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "libAFDownloadRequestOperation.a">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

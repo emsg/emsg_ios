@@ -18,6 +18,7 @@
 @property (nonatomic,weak)UILabel * timeLabel;
 @property (nonatomic,weak)UILabel * unreadLabel;
 @property (nonatomic,assign)BOOL isFriendList;
+@property (nonatomic,strong)NSString * gender;
 
 /**
  *  传入一条消息的字典或者模型

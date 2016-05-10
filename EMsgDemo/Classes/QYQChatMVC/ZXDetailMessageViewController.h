@@ -16,4 +16,6 @@
 
 @property (nonatomic,assign)BOOL isFromContact;
 
+@property (nonatomic, assign)BOOL  isFromSearch;
+
 @end
