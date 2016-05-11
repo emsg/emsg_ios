@@ -57,17 +57,17 @@
         [weakSelf loadMoreData];
     }];
     
-    NSArray * idleImages = @[[UIImage imageNamed:@"ah_7"]];
-    
-    NSArray * pullingImages = @[[UIImage imageNamed:@"ah_0"]];
-    
-    NSArray * refreshingImages = @[[UIImage imageNamed:@"ah_0"],[UIImage imageNamed:@"ah_1"],[UIImage imageNamed:@"ah_2"],[UIImage imageNamed:@"ah_3"],[UIImage imageNamed:@"ah_4"],[UIImage imageNamed:@"ah_5"],[UIImage imageNamed:@"ah_6"],[UIImage imageNamed:@"ah_7"]];
-    
-    [((MJRefreshGifHeader *)self.tableView.mj_header) setImages:idleImages forState:MJRefreshStateIdle];
-    // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
-    [((MJRefreshGifHeader *)self.tableView.mj_header) setImages:pullingImages forState:MJRefreshStatePulling];
-    // 设置正在刷新状态的动画图片
-    [((MJRefreshGifHeader *)self.tableView.mj_header) setImages:refreshingImages forState:MJRefreshStateRefreshing];
+//    NSArray * idleImages = @[[UIImage imageNamed:@"ah_7"]];
+//    
+//    NSArray * pullingImages = @[[UIImage imageNamed:@"ah_0"]];
+//    
+//    NSArray * refreshingImages = @[[UIImage imageNamed:@"ah_0"],[UIImage imageNamed:@"ah_1"],[UIImage imageNamed:@"ah_2"],[UIImage imageNamed:@"ah_3"],[UIImage imageNamed:@"ah_4"],[UIImage imageNamed:@"ah_5"],[UIImage imageNamed:@"ah_6"],[UIImage imageNamed:@"ah_7"]];
+//    
+//    [((MJRefreshGifHeader *)self.tableView.mj_header) setImages:idleImages forState:MJRefreshStateIdle];
+//    // 设置即将刷新状态的动画图片（一松开就会刷新的状态）
+//    [((MJRefreshGifHeader *)self.tableView.mj_header) setImages:pullingImages forState:MJRefreshStatePulling];
+//    // 设置正在刷新状态的动画图片
+//    [((MJRefreshGifHeader *)self.tableView.mj_header) setImages:refreshingImages forState:MJRefreshStateRefreshing];
     //hide time
     ((MJRefreshStateHeader *)self.tableView.mj_header).lastUpdatedTimeLabel.hidden = YES;
     

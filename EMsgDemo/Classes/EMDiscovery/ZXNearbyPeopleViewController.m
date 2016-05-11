@@ -277,13 +277,13 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             [self.tableView.mj_header beginRefreshing];
 
         }
-        if (buttonIndex == 3) {
+        if (buttonIndex == 2) {
             
             self.sex = nil;
             [self.tableView.mj_header beginRefreshing];
 
         }
-        if (buttonIndex == 4) {
+        if (buttonIndex == 3) {
             
             [weakSelf.navigationController popViewControllerAnimated:YES];
 
