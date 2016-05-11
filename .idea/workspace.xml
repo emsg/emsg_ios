@@ -55,7 +55,7 @@
   <component name="CreatePatchCommitExecutor">
     <option name="PATCH_PATH" value="" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_0ca5544cc8cca19a9a4037854a35577ee9fd4d9e" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="iphoneos_d782dfd3e9dd7283597fe7a5d7cb590ee3e85864" />
   <component name="FavoritesManager">
     <favorites_list name="EMsgDemo" />
   </component>
@@ -67,8 +67,9 @@
             <state relative-caret-position="2165">
               <caret line="261" column="27" selection-start-line="261" selection-start-column="27" selection-end-line="261" selection-end-column="27" />
               <folding>
-                <element signature="e#134#174#0" expanded="true" />
+                <marker date="1462863301000" expanded="true" signature="142:184" placeholder="..." />
                 <marker date="1462863301000" expanded="true" signature="9097:9099" placeholder="/.../" />
+                <marker date="1462863301000" expanded="true" signature="9097:9101" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -89,19 +90,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-1065">
               <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-              <folding>
-                <marker date="1462846569000" expanded="true" signature="0:142" placeholder="//..." />
-                <marker date="1462846569000" expanded="false" signature="152:215" placeholder="..." />
-                <marker date="1462846569000" expanded="true" signature="260:590" placeholder="..." />
-                <marker date="1462846569000" expanded="true" signature="641:6864" placeholder="..." />
-                <marker date="1462846569000" expanded="true" signature="663:844" placeholder="{...}" />
-                <marker date="1462846569000" expanded="true" signature="863:3289" placeholder="{...}" />
-                <marker date="1462846569000" expanded="true" signature="3365:4226" placeholder="{...}" />
-                <marker date="1462846569000" expanded="true" signature="4249:5154" placeholder="{...}" />
-                <marker date="1462846569000" expanded="true" signature="5174:5907" placeholder="{...}" />
-                <marker date="1462846569000" expanded="true" signature="5931:6783" placeholder="{...}" />
-                <marker date="1462846569000" expanded="true" signature="6817:6862" placeholder="{...}" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -612,8 +601,9 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#134#174#0" expanded="true" />
+            <marker date="1462863301000" expanded="true" signature="142:184" placeholder="..." />
             <marker date="1462863301000" expanded="true" signature="9097:9099" placeholder="/.../" />
+            <marker date="1462863301000" expanded="true" signature="9097:9101" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -771,8 +761,9 @@
         <state relative-caret-position="2165">
           <caret line="261" column="27" selection-start-line="261" selection-start-column="27" selection-end-line="261" selection-end-column="27" />
           <folding>
-            <element signature="e#134#174#0" expanded="true" />
+            <marker date="1462863301000" expanded="true" signature="142:184" placeholder="..." />
             <marker date="1462863301000" expanded="true" signature="9097:9099" placeholder="/.../" />
+            <marker date="1462863301000" expanded="true" signature="9097:9101" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -789,19 +780,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1065">
           <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-          <folding>
-            <marker date="1462846569000" expanded="true" signature="0:142" placeholder="//..." />
-            <marker date="1462846569000" expanded="false" signature="152:215" placeholder="..." />
-            <marker date="1462846569000" expanded="true" signature="260:590" placeholder="..." />
-            <marker date="1462846569000" expanded="true" signature="641:6864" placeholder="..." />
-            <marker date="1462846569000" expanded="true" signature="663:844" placeholder="{...}" />
-            <marker date="1462846569000" expanded="true" signature="863:3289" placeholder="{...}" />
-            <marker date="1462846569000" expanded="true" signature="3365:4226" placeholder="{...}" />
-            <marker date="1462846569000" expanded="true" signature="4249:5154" placeholder="{...}" />
-            <marker date="1462846569000" expanded="true" signature="5174:5907" placeholder="{...}" />
-            <marker date="1462846569000" expanded="true" signature="5931:6783" placeholder="{...}" />
-            <marker date="1462846569000" expanded="true" signature="6817:6862" placeholder="{...}" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>

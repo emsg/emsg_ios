@@ -12,6 +12,7 @@
 #import "MBProgressHUD+Add.h"
 #import "LCActionSheet.h"
 #import "HawkLocation.h"
+#import "NSDate+Category.h"
 
 @interface ZXNearbyPeopleViewController ()<UITableViewDataSource,UITableViewDelegate,UIAlertViewDelegate>
 
@@ -218,7 +219,8 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     [cell.iconImageView sd_setImageWithURL:[NSURL URLWithString:[ZXCommens isNilString:dic[@"icon"]] ? nil:dic[@"icon"]]placeholderImage:[UIImage imageNamed:@"120"]];
     cell.nickNameLabel.text = [ZXCommens isNilString:dic[@"nickname"]] ? @"未知人" : dic[@"nickname"];
     cell.gender = [ZXCommens isNilString:dic[@"gender"]] ? @"男" :  dic[@"gender"];
-    cell.timeLabel.text = [self transformDist:dic];
+    cell.distLabel.text = [self transformDist:dic];
+    cell.timeLabel.text = [self transformTime:dic];
     return cell;
 }
 
@@ -240,6 +242,16 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
 }
 
+- (NSString *)transformTime:(NSDictionary *)dic{
+    
+    if (!dic[@"ts"] || [dic[@"ts"] isKindOfClass:[NSNull class]]) {
+        return @"时间未知";
+    }
+    NSDate *currentTime = [NSDate dateWithTimeIntervalSince1970:[dic[@"ts"] longValue]];
+    return [currentTime timeIntervalDescription];
+}
+
+
 - (NSString *)transformDist:(NSDictionary *)dic{
     
     if (!dic[@"dist"]) {
@@ -252,7 +264,10 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)rightNavClick{
-    LCActionSheet * sheet = [[LCActionSheet alloc] initWithTitle:nil buttonTitles:[[NSArray alloc] initWithObjects:@"女",@"男",@"全部",nil] redButtonIndex:-1 clicked:^(NSInteger buttonIndex) {
+    
+    __weak typeof(self) weakSelf = self;
+    
+    LCActionSheet * sheet = [[LCActionSheet alloc] initWithTitle:nil buttonTitles:[[NSArray alloc] initWithObjects:@"只看女生",@"只看男生",@"查看全部",@"清除地理位置并退出",nil] redButtonIndex:-1 clicked:^(NSInteger buttonIndex) {
         if (buttonIndex == 0) {
             self.sex = @"女";
             [self.tableView.mj_header beginRefreshing];
@@ -262,9 +277,15 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
             [self.tableView.mj_header beginRefreshing];
 
         }
-        if (buttonIndex == 2) {
+        if (buttonIndex == 3) {
+            
             self.sex = nil;
             [self.tableView.mj_header beginRefreshing];
+
+        }
+        if (buttonIndex == 4) {
+            
+            [weakSelf.navigationController popViewControllerAnimated:YES];
 
         }
         

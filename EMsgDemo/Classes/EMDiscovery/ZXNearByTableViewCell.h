@@ -14,5 +14,6 @@
 @property (nonatomic,weak)UILabel * nickNameLabel;
 @property (nonatomic,weak)UILabel * timeLabel;
 @property (nonatomic,strong)NSString * gender;
+@property (nonatomic,weak)UILabel * distLabel;
 
 @end

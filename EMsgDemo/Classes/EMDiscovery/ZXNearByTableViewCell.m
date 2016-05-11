@@ -34,9 +34,20 @@
         
         [self.contentView addSubview:nickNameLabel];
         
+        //距离
+        UILabel * distLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
+                                                                        10,
+                                                                        SCREEN_WIDTH - 10,
+                                                                        20)];
+        distLabel.font = [UIFont systemFontOfSize:11];
+        _distLabel = distLabel;
+        distLabel.textColor = QYQHEXCOLOR(0x999999);
+        distLabel.textAlignment = NSTextAlignmentRight;
+        [self.contentView addSubview:distLabel];
+        
         //时间
         UILabel * timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                        10,
+                                                                        30,
                                                                         SCREEN_WIDTH - 10,
                                                                         20)];
         timeLabel.font = [UIFont systemFontOfSize:11];
