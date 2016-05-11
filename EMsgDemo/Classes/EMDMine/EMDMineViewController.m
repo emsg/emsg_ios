@@ -31,7 +31,7 @@
 - (void)viewDidLoad{
     [super viewDidLoad];
     
-    _titlesArray = @[@[@"昵称"],@[@"关于我们",@"帮助",@"检查SDK版本更新",@"退出登录"],@[@"附近的人"]];
+    _titlesArray = @[@[@"昵称"],@[@"关于我们",@"帮助",@"检查SDK版本更新",@"退出登录"]];
     
     _menuTableView = [[UITableView alloc]
                       initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 64 - 49)
@@ -114,9 +114,7 @@
         [self logoutAction];
     }
     if (indexPath.section == 2 && indexPath.row == 0) {
-        ZXNearbyPeopleViewController * nearBy = [[ZXNearbyPeopleViewController alloc] init];
-        nearBy.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:nearBy animated:YES];
+
     }
 }
 

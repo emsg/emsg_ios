@@ -13,6 +13,7 @@
 #import "EMDAddFriendViewController.h"
 #import "ZXNotiViewController.h"
 #import "ZXContactListRequest.h"
+#import "ZXNearbyPeopleViewController.h"
 
 @interface EMDContactViewController ()<UITableViewDataSource,UITableViewDelegate>
 @property(nonatomic, strong) UITableView *listTable;
@@ -227,7 +228,7 @@
                                                                      70,
                                                                      15)];
     friendNew1.font = [UIFont systemFontOfSize:17];
-    friendNew1.text = @"我的群组";
+    friendNew1.text = @"附近的人";
     [topView1 addSubview:friendNew1];
     
     [headerView addSubview:topView1];
@@ -236,6 +237,43 @@
     UITapGestureRecognizer * tap1 = [[UITapGestureRecognizer alloc] init];
     [tap1 addTarget:self action:@selector(headerViewButtonClicked1)];
     [topView1 addGestureRecognizer:tap1];
+    
+    
+//    UIView * topView2 = [[UIView alloc]initWithFrame:CGRectMake(0, [topView bottom],SCREEN_WIDTH, 60)];
+//    topView2.backgroundColor = [UIColor whiteColor];
+//    [headerView addSubview:topView2];
+//    [Tools_F setViewlayer:topView2 cornerRadius:0 borderWidth:0.7 borderColor:BASE_CELL_LINE_COLOR];
+//    UIImageView * iconNew2 = [[UIImageView alloc]initWithFrame:CGRectMake(7.5,
+//                                                                          7.5,
+//                                                                          45,
+//                                                                          45)];
+//    iconNew2.image = [UIImage imageNamed:@"120"];
+//    [Tools_F setViewlayer:iconNew2 cornerRadius:3 borderWidth:0 borderColor:[UIColor clearColor]];
+//    UIImageView * chooseImageView2 = [[UIImageView alloc]initWithImage:image];
+//    chooseImageView2.frame = CGRectMake(CGRectGetMaxX(countLabel.frame)+ 5,
+//                                        25,
+//                                        5,
+//                                        10);
+//    [iconNew2 addSubview:chooseImageView2];
+//    
+//    [topView2 addSubview:iconNew2];
+//    
+//    
+//    UILabel * friendNew2 = [[UILabel alloc] initWithFrame:CGRectMake(CGRectGetMaxX(iconNew1.frame) + 13,
+//                                                                     22.5,
+//                                                                     70,
+//                                                                     15)];
+//    friendNew2.font = [UIFont systemFontOfSize:17];
+//    friendNew2.text = @"附近的人";
+//    [topView2 addSubview:friendNew2];
+//    
+//    [headerView addSubview:topView2];
+//    
+//    topView2.userInteractionEnabled = YES;
+//    UITapGestureRecognizer * tap2 = [[UITapGestureRecognizer alloc] init];
+//    [tap2 addTarget:self action:@selector(headerViewButtonClicked2)];
+//    [topView2 addGestureRecognizer:tap2];
+    
     headerView.frame = CGRectMake(0, 0, SCREEN_WIDTH, [topView1 bottom] );
     self.listTable.tableHeaderView = headerView;
     
@@ -359,7 +397,13 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
 - (void)headerViewButtonClicked1{
-    
+    ZXNearbyPeopleViewController * nearBy = [[ZXNearbyPeopleViewController alloc] init];
+    nearBy.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:nearBy animated:YES];
+}
+
+- (void)headerViewButtonClicked2{
+
 }
 
 - (void)rightButtonClicked{

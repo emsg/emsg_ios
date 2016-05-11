@@ -1184,7 +1184,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "59aaf5ac-acc2-40d7-9e7c-d66cec150cfe";
+				PROVISIONING_PROFILE = "d1f875f9-b94d-41b4-b855-e23681e82457";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -1247,7 +1247,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.longcai.emsg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "59aaf5ac-acc2-40d7-9e7c-d66cec150cfe";
+				PROVISIONING_PROFILE = "d1f875f9-b94d-41b4-b855-e23681e82457";
 			};
 			name = Debug;
 		};

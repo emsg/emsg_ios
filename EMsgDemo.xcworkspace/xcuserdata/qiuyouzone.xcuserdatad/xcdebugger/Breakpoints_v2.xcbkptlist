@@ -73,22 +73,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "EMsgDemo/Classes/EMDContact/EMDContactViewController.m"
-            timestampString = "480343551.485927"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "-apiRequestContactList"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "EMsgDemo/EMsgSDK/FMDBManger.m"
             timestampString = "480343817.751989"
             startingColumnNumber = "9223372036854775807"
@@ -122,11 +106,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "EMsgDemo/Classes/EMDContact/EMDContactViewController.m"
-            timestampString = "480344519.913577"
+            timestampString = "484645777.475257"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "418"
-            endingLineNumber = "418"
+            startingLineNumber = "462"
+            endingLineNumber = "462"
             landmarkName = "-deleteFriend:"
             landmarkType = "5">
          </BreakpointContent>
