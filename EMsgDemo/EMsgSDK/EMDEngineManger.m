@@ -380,6 +380,7 @@ didConnectToHost:(NSString *)host
 - (void)packetFactory:(NSString *)packetString hasNoEndPacket:(BOOL)hasNoEnd{
     
     if (!hasNoEnd) {
+        buffData = nil;
         NSRange foundkill =
         [packetString rangeOfString:SERVER_KILL options:NSBackwardsSearch];
         NSRange foundHeart =
@@ -395,8 +396,9 @@ didConnectToHost:(NSString *)host
         }
     }
     else{
-        buffData = nil;
-        buffData = [[NSMutableData alloc] initWithCapacity:1];
+        if (buffData == nil) {
+            buffData = [[NSMutableData alloc] initWithCapacity:1];
+        }
         NSData *jsonData = [packetString dataUsingEncoding:NSUTF8StringEncoding];
         [buffData appendData:jsonData];
     }
