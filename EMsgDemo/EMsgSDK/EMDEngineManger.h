@@ -52,6 +52,8 @@
 
 @property(nonatomic, assign) BOOL isLogOut;
 
+@property (nonatomic,assign) BOOL isCheckingNetworkingToReConnect;
+
 + (instancetype)sharedInstance;
 
 - (void)autoReconnect;

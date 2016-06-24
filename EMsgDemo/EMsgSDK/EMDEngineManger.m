@@ -13,7 +13,7 @@
 #import "FMDBManger.h"
 
 @interface EMDEngineManger()<GCDAsyncSocketDelegate>{
-    NSMutableData *packetdata;
+    NSMutableData *buffData;
     BOOL hasAuth;
     BOOL isNetWorkAvailable;
     NSTimer *recnnecttimer;
@@ -48,7 +48,9 @@
         isNetWorkAvailable = NO;
     } else {
         isNetWorkAvailable = YES;
-        [self autoReconnect];
+        if (![[EMDEngineManger sharedInstance] isAuthed] && [EMDEngineManger sharedInstance].isCheckingNetworkingToReConnect) {
+            [self autoReconnect];
+        }
     }
 }
 - (void)registerNetWorkStatus {
@@ -108,8 +110,8 @@
     if (self.pwd != nil) {
         self.pwd = nil;
     }
-    if (packetdata != nil) {
-        packetdata = nil;
+    if (buffData != nil) {
+        buffData = nil;
     }
 }
 - (BOOL)auth:(NSString *)username
@@ -167,6 +169,8 @@ withPassword:(NSString *)password
     [NSString stringWithFormat:@"%@%@", [root mj_JSONString], END_TAG];
     NSData *data = [logininfo dataUsingEncoding:NSUTF8StringEncoding];
     [asyncSocket writeData:data withTimeout:-1 tag:0];
+    
+    
     return YES;
 }
 
@@ -180,129 +184,8 @@ didConnectToHost:(NSString *)host
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
     
     [sock readDataWithTimeout:-1 tag:0];
-    PacketType pakcetType = [self isPacketEnd:data];
-    if (pakcetType == PACKET_KILL) //服务器强制断开数据流 强制下线
-    {
-        packetdata = nil;
-        
-        hasAuth = NO;
-        
-        if (hearttimer != nil) //  强制下线 关闭心跳包
-        {
-            [hearttimer invalidate];
-            hearttimer = nil;
-        }
-        
-        if (_delegate && [_delegate respondsToSelector:@selector(didKilledByServer)]) {
-            [_delegate didKilledByServer];
-            [self logout];
-        }
-    } else if (pakcetType == PACKET_HEART) //心跳包数据流
-    {
-        packetdata = nil;
-        
-    } else if (pakcetType ==
-               PACKET_NOTEND) //由于太长的数据无法一次读入所以需要做特殊处理
-    {
-        
-    } else if (pakcetType == PACKET_END) { //普通数据读取完成
-        NSString *msg = [[NSString alloc] initWithData:packetdata
-                                              encoding:NSUTF8StringEncoding];
-        packetdata = nil;
-        
-        NSRange foundEnd = [msg rangeOfString:END_TAG options:NSBackwardsSearch];
-        NSString *msgdictory = [msg substringToIndex:foundEnd.location];
-        NSDictionary *dic = [msgdictory mj_JSONObject];
-        NSDictionary *envelope = [dic objectForKey:@"envelope"];
-        
-        int type = [[envelope objectForKey:@"type"] intValue];
-        
-        
-        
-        if (type == MSG_TYPE_OPEN_SESSION) //登陆验证返回
-        {
-            NSDictionary *entity = [dic objectForKey:@"entity"];
-            NSString *result = [entity objectForKey:@"result"];
-            NSDictionary *envelope = [dic objectForKey:@"envelope"];
-            
-            if (result != nil && [result isEqual:@"ok"]) //登陆成功
-            {
-                hasAuth = YES;
-                [self setIsLogOut:NO];
-                [self sendHeartPacket]; //发送心跳包
-                if (_delegate && [_delegate respondsToSelector:@selector(didAuthSuccessed)]) {
-                    [_delegate didAuthSuccessed];
-                }
-                //执行登陆成功的消息回执
-                if (envelope != nil) {
-                    
-                    NSString *mid = [envelope objectForKey:@"id"];
-                    int mtype = [[envelope objectForKey:@"type"] intValue];
-                    
-                    if (mtype == 0 && mid != nil) {
-                        
-                        [self sendAckMsg:mid];
-                    }
-                }
-                
-                NSDictionary *delay = [dic objectForKey:@"delay"];
-                NSArray *array = [delay objectForKey:@"packets"];
-                if (array != nil) {
-                    NSMutableArray *msgArray = [[NSMutableArray alloc] init];
-                    for (int i = 0; i < [array count]; i++) {
-                        NSDictionary *dic = [array objectAtIndex:i];
-                        EMsgMessage *msg = [EMsgMessage mj_objectWithKeyValues:dic];
-                        [msgArray addObject:msg];
-                        
-                        if ([msg.envelope.ack intValue] == 1) {
-                            [self sendAckMsg:msg.envelope.uid]; //普通消息需要回执
-                        }
-                    }
-                    if ([msgArray count] > 0) //离线消息
-                    {
-                        if (_delegate && [_delegate respondsToSelector:@selector(
-                                                                                 didReceivedOfflineMessageArray:)]) {
-                            [_delegate didReceivedOfflineMessageArray:msgArray];
-                        }
-                    }
-                }
-            } else {
-                hasAuth = NO;
-                if (_delegate && [_delegate respondsToSelector:@selector(didAuthFailed:)]) {
-                    NSString *reason = [entity objectForKey:@"reason"];
-                    [_delegate didAuthFailed:reason];
-                }
-            }
-        } else if (type == MSG_TYPE_CHAT ||
-                   type == MSG_TYPE_GROUP_CHAT) //聊天消息返回
-        {
-            EMsgMessage *msg = [[EMsgMessage alloc] init];
-            msg = [EMsgMessage mj_objectWithKeyValues:dic];
-            
-            if ([msg.envelope.ack intValue] == 1) {
-                [self sendAckMsg:msg.envelope.uid]; //普通消息需要回执
-            }
-            if (_delegate && [_delegate respondsToSelector:@selector(didReceivedMessage:)]) {
-                [_delegate didReceivedMessage:msg];
-            }
-        }
-        
-        else if (type == MSG_TYPE_STATE) // ack  返回  暂不处理
-        {
-        }
-        else if (type >= 100 && type <= 111) {
-            EMsgMessage *msg = [[EMsgMessage alloc] init];
-            msg = [EMsgMessage mj_objectWithKeyValues:dic];
-            
-            if ([msg.envelope.ack intValue] == 1) {
-                [self sendAckMsg:msg.envelope.uid]; //普通消息需要回执
-            }
-            if (_delegate && [_delegate respondsToSelector:@selector(didReceivedMessage:)]) {
-                [_delegate didReceivedMessage:msg];
-            }
-            
-        }
-    }
+   
+    [self asyncPreDispatchPacket:data];
 }
 
 - (void)sendMessageWithToId:(NSString *)toId
@@ -458,34 +341,189 @@ didConnectToHost:(NSString *)host
     }
 }
 
-- (int)isPacketEnd:(NSData *)data {
-    if (packetdata == nil) {
-        packetdata = [[NSMutableData alloc] initWithCapacity:1];
+// Packet包预处理
+- (void)asyncPreDispatchPacket:(NSData *)data{
+    if (buffData == nil) {
+        buffData = [[NSMutableData alloc] initWithCapacity:1];
     }
-    [packetdata appendData:data];
-    NSString *msg =
-    [[NSString alloc] initWithData:packetdata encoding:NSUTF8StringEncoding];
-    NSRange foundEnd = [msg rangeOfString:END_TAG options:NSBackwardsSearch];
-    
-    if (foundEnd.location != NSNotFound) {
-        NSRange foundkill =
-        [msg rangeOfString:SERVER_KILL options:NSBackwardsSearch];
-        NSRange foundHeart =
-        [msg rangeOfString:HEART_BEAT options:NSBackwardsSearch];
-        if (foundkill.location != NSNotFound) {
-            
-            return PACKET_KILL;
-        } else if (foundHeart.location != NSNotFound) {
-            return PACKET_HEART;
+    __weak typeof(self) weakSelf = self;
+    dispatch_queue_t buffDataQueue = dispatch_queue_create("com.qiuyouzone.com", NULL);
+    dispatch_async(buffDataQueue, ^{
+        [buffData appendData:data];
+        NSString *buffMsg = [[NSString alloc] initWithData:buffData encoding:NSUTF8StringEncoding];
+        NSArray  *buffArray = [buffMsg componentsSeparatedByString:END_TAG];
+        
+        // 检测末尾字符串是否含有END_TAG
+        BOOL isHasNoEndPacket = NO;
+        if (buffMsg.length >= 3) {
+            NSString * endString = [buffMsg substringFromIndex:buffMsg.length - 3];
+            if ([endString isEqualToString:END_TAG]) {
+                isHasNoEndPacket = YES;
+            }
         }
-        NSString *msgdictory = [msg substringToIndex:foundEnd.location];
-        NSDictionary *dic = [msgdictory mj_JSONObject];
-        if ([dic isKindOfClass:[NSDictionary class]]) {
-            return PACKET_END;
+        
+        @autoreleasepool {
+            for (NSString *msgString in buffArray) {
+                
+                if (msgString == buffArray.lastObject) {
+                    [weakSelf packetFactory:msgString hasNoEndPacket:isHasNoEndPacket];
+                }
+                else{
+                    [weakSelf packetFactory:msgString hasNoEndPacket:NO];
+                }
+            }
         }
-    }
-    return PACKET_NOTEND;
+    });
 }
+
+// 加工packet
+- (void)packetFactory:(NSString *)packetString hasNoEndPacket:(BOOL)hasNoEnd{
+    
+    if (!hasNoEnd) {
+        NSRange foundkill =
+        [packetString rangeOfString:SERVER_KILL options:NSBackwardsSearch];
+        NSRange foundHeart =
+        [packetString rangeOfString:HEART_BEAT options:NSBackwardsSearch];
+        if (foundkill.location != NSNotFound) {
+            [self packetToMssage:PACKET_KILL andPacketString:packetString];
+        } else if (foundHeart.location != NSNotFound) {
+            [self packetToMssage:PACKET_HEART andPacketString:packetString];
+        }
+        NSDictionary *dic = [packetString mj_JSONObject];
+        if ([dic isKindOfClass:[NSDictionary class]]) {
+            [self packetToMssage:PACKET_END andPacketString:packetString];
+        }
+    }
+    else{
+        buffData = nil;
+        buffData = [[NSMutableData alloc] initWithCapacity:1];
+        NSData *jsonData = [packetString dataUsingEncoding:NSUTF8StringEncoding];
+        [buffData appendData:jsonData];
+    }
+}
+
+- (void)packetToMssage:(PacketType)pakcetType andPacketString:(NSString *)packetString{
+    
+    if (pakcetType == PACKET_KILL) //服务器强制断开数据流 强制下线
+    {
+        hasAuth = NO;
+        
+        if (hearttimer != nil) //  强制下线 关闭心跳包
+        {
+            [hearttimer invalidate];
+            hearttimer = nil;
+        }
+        
+        if (_delegate && [_delegate respondsToSelector:@selector(didKilledByServer)]) {
+            [_delegate didKilledByServer];
+            [self logout];
+        }
+    } else if (pakcetType == PACKET_HEART) //心跳包数据流
+    {
+        
+    } else if (pakcetType ==
+               PACKET_NOTEND) //由于太长的数据无法一次读入所以需要做特殊处理
+    {
+        
+    } else if (pakcetType == PACKET_END) { //普通数据读取完成
+        NSDictionary *dic = [packetString mj_JSONObject];
+        NSDictionary *envelope = [dic objectForKey:@"envelope"];
+        
+        int type = [[envelope objectForKey:@"type"] intValue];
+        
+        
+        
+        if (type == MSG_TYPE_OPEN_SESSION) //登陆验证返回
+        {
+            NSDictionary *entity = [dic objectForKey:@"entity"];
+            NSString *result = [entity objectForKey:@"result"];
+            NSDictionary *envelope = [dic objectForKey:@"envelope"];
+            
+            if (result != nil && [result isEqual:@"ok"]) //登陆成功
+            {
+                hasAuth = YES;
+                [self setIsLogOut:NO];
+                [EMDEngineManger sharedInstance].isCheckingNetworkingToReConnect = YES;
+                [self sendHeartPacket]; //发送心跳包
+                if (_delegate && [_delegate respondsToSelector:@selector(didAuthSuccessed)]) {
+                    [_delegate didAuthSuccessed];
+                }
+                //执行登陆成功的消息回执
+                if (envelope != nil) {
+                    
+                    NSString *mid = [envelope objectForKey:@"id"];
+                    int mtype = [[envelope objectForKey:@"type"] intValue];
+                    
+                    if (mtype == 0 && mid != nil) {
+                        
+                        [self sendAckMsg:mid];
+                    }
+                }
+                
+                NSDictionary *delay = [dic objectForKey:@"delay"];
+                NSArray *array = [delay objectForKey:@"packets"];
+                if (array != nil) {
+                    NSMutableArray *msgArray = [[NSMutableArray alloc] init];
+                    for (int i = 0; i < [array count]; i++) {
+                        NSDictionary *dic = [array objectAtIndex:i];
+                        EMsgMessage *msg = [EMsgMessage mj_objectWithKeyValues:dic];
+                        [msgArray addObject:msg];
+                        
+                        if ([msg.envelope.ack intValue] == 1) {
+                            [self sendAckMsg:msg.envelope.uid]; //普通消息需要回执
+                        }
+                    }
+                    if ([msgArray count] > 0) //离线消息
+                    {
+                        if (_delegate && [_delegate respondsToSelector:@selector(
+                                                                                 didReceivedOfflineMessageArray:)]) {
+                            [_delegate didReceivedOfflineMessageArray:msgArray];
+                        }
+                    }
+                }
+            } else {
+                hasAuth = NO;
+                if (_delegate && [_delegate respondsToSelector:@selector(didAuthFailed:)]) {
+                    NSString *reason = [entity objectForKey:@"reason"];
+                    [_delegate didAuthFailed:reason];
+                }
+            }
+        } else if (type == MSG_TYPE_CHAT ||
+                   type == MSG_TYPE_GROUP_CHAT) //聊天消息返回
+        {
+            EMsgMessage *msg = [[EMsgMessage alloc] init];
+            msg = [EMsgMessage mj_objectWithKeyValues:dic];
+            
+            if ([msg.envelope.ack intValue] == 1) {
+                [self sendAckMsg:msg.envelope.uid]; //普通消息需要回执
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(didReceivedMessage:)]) {
+                [_delegate didReceivedMessage:msg];
+            }
+        }
+        
+        else if (type == MSG_TYPE_STATE) // ack  返回  暂不处理
+        {
+        }
+        else if (type >= 100 && type <= 111) {
+            EMsgMessage *msg = [[EMsgMessage alloc] init];
+            msg = [EMsgMessage mj_objectWithKeyValues:dic];
+            
+            if ([msg.envelope.ack intValue] == 1) {
+                [self sendAckMsg:msg.envelope.uid]; //普通消息需要回执
+            }
+            if (_delegate && [_delegate respondsToSelector:@selector(didReceivedMessage:)]) {
+                [_delegate didReceivedMessage:msg];
+            }
+            
+        }
+    }
+    
+}
+
+
+
+
 /*发送消息回执*/
 - (void)sendAckMsg:(NSString *)msgid {
     NSMutableDictionary *envelope = [NSMutableDictionary dictionary];
