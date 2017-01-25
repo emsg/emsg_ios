@@ -7,6 +7,8 @@
 //
 
 #import "ZXRequest.h"
+#import "YTKNetworkConfig.h"
+#import "AFSecurityPolicy.h"
 
 @interface ZXRequest ()
 
@@ -20,11 +22,13 @@
 - (instancetype)initWithRUrl:(NSString *)url
                   andRMethod:(YTKRequestMethod)method
                 andRArgument:(id)argument {
+    
     if (self = [super init]) {
         self.rURl = url;
         self.rMethod = method;
         self.rArgument = argument;
     }
+    //[self configHttps];
     return self;
 }
 
@@ -69,7 +73,33 @@
 //    return nil;
 //}
 
-
+/*-(void)configHttps{
+    
+    // 获取证书
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"baidu" ofType:@"cer"];//证书的路径
+    NSData *certData = [NSData dataWithContentsOfFile:cerPath];
+    
+    // 配置安全模式
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    
+    //config.baseUrl = Host_Server;
+    //    config.cdnUrl = @"http://fen.bi";
+    
+    // 验证公钥和证书的其他信息
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    
+    // 允许自建证书
+    securityPolicy.allowInvalidCertificates = YES;
+    
+    // 校验域名信息
+    securityPolicy.validatesDomainName      = NO;
+    
+    // 添加服务器证书,单向验证;  可采用双证书 双向验证;
+    //securityPolicy.pinnedCertificates       = [NSSet setWithObject:certData];
+    
+    [config setSecurityPolicy:securityPolicy];
+    
+}*/
 
 
 @end

@@ -154,7 +154,7 @@
         dic = [ZXCommens factionaryParams:@{@"geo":[NSString stringWithFormat:@"%@,%@",_locationManager.latitude,_locationManager.longitude],@"page_size":[NSString stringWithFormat:@"%d",self.pageSize],@"page_no":[NSString stringWithFormat:@"%d",self.pageNo / self.pageSize]} WithServerAndMethod:@{@"service":@"user",@"method":@"find_user_by_geo"}];
     }
     
-    ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPost andRArgument:dic];
+    ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPOST andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [weakSelf endRefreshAnimation];
         if ([request.responseJSONObject[@"success"] integerValue] == 1) {
@@ -267,7 +267,7 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     __weak typeof(self) weakSelf = self;
     
-    LCActionSheet * sheet = [[LCActionSheet alloc] initWithTitle:nil buttonTitles:[[NSArray alloc] initWithObjects:@"只看女生",@"只看男生",@"查看全部",@"清除地理位置并退出",nil] redButtonIndex:-1 clicked:^(NSInteger buttonIndex) {
+    /*LCActionSheet * sheet = [[LCActionSheet alloc] initWithTitle:nil buttonTitles:[[NSArray alloc] initWithObjects:@"只看女生",@"只看男生",@"查看全部",@"清除地理位置并退出",nil] redButtonIndex:-1 clicked:^(NSInteger buttonIndex) {
         if (buttonIndex == 0) {
             self.sex = @"女";
             [self.tableView.mj_header beginRefreshing];
@@ -289,7 +289,32 @@ heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
         }
         
-    }];
+    }];*/
+    LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:@"Cancel" clicked:^(LCActionSheet *actionSheet, NSInteger buttonIndex) {
+        
+        NSLog(@"clickedButtonAtIndex: %d", (int)buttonIndex);
+        if (buttonIndex == 0) {
+            self.sex = @"女";
+            [self.tableView.mj_header beginRefreshing];
+        }
+        if (buttonIndex == 1) {
+            self.sex = @"男";
+            [self.tableView.mj_header beginRefreshing];
+            
+        }
+        if (buttonIndex == 2) {
+            
+            self.sex = nil;
+            [self.tableView.mj_header beginRefreshing];
+            
+        }
+        if (buttonIndex == 3) {
+            
+            [weakSelf.navigationController popViewControllerAnimated:YES];
+            
+        }
+        
+    } otherButtonTitles:@"只看女生",@"只看男生",@"查看全部",@"清除地理位置并退出", nil];
     [sheet show];
 }
 

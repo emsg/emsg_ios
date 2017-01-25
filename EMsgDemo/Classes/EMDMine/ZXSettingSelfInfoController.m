@@ -121,14 +121,24 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ZXEditSelfInfoViewController * zs = [[ZXEditSelfInfoViewController alloc] init];
     if (indexPath.section == 0 && indexPath.row == 0) {
-        LCActionSheet * sheet = [[LCActionSheet alloc] initWithTitle:nil buttonTitles:[[NSArray alloc] initWithObjects:@"拍照",@"从手机相册中选择",nil] redButtonIndex:-1 clicked:^(NSInteger buttonIndex) {
+        /*LCActionSheet * sheet = [[LCActionSheet alloc] initWithTitle:nil buttonTitles:[[NSArray alloc] initWithObjects:@"拍照",@"从手机相册中选择",nil] redButtonIndex:-1 clicked:^(NSInteger buttonIndex) {
             if (buttonIndex == 0) {
                 [self pickImageFromCamera];
             }
             if (buttonIndex == 1) {
                 [self pickImageFromAlbum];
             }
-        }];
+        }];*/
+        LCActionSheet *sheet = [LCActionSheet sheetWithTitle:nil cancelButtonTitle:nil clicked:^(LCActionSheet *actionSheet, NSInteger buttonIndex) {
+            
+            NSLog(@"clickedButtonAtIndex: %d", (int)buttonIndex);
+            if (buttonIndex == 0) {
+                [self pickImageFromCamera];
+            }
+            if (buttonIndex == 1) {
+                [self pickImageFromAlbum];
+            }
+        } otherButtonTitles:@"拍照",@"从手机相册中选择", nil];
         [sheet show];
     }
     if (indexPath.section == 0 && indexPath.row == 2) {
@@ -208,7 +218,7 @@ didFinishPickingMediaWithInfo:(NSDictionary *)info {
                  NSString * headerUrl = [NSString stringWithFormat:@"%@%@",Server_File_Host,dic[@"entity"][@"id"]];
                  NSDictionary *dic = [[NSDictionary alloc] init];
                  dic = [ZXCommens factionaryParams:@{@"icon_url":headerUrl} WithServerAndMethod:@{@"service":@"user",@"method":@"set_icon"}];
-                 ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPost andRArgument:dic];
+                 ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPOST andRArgument:dic];
                  [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
                      [weakSelf hideHud];
                      if ([request.responseJSONObject[@"success"] integerValue] == 1) {

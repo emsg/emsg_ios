@@ -89,7 +89,7 @@
     [self showHudInView:self.view hint:@""];
     
     ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
-                                              andRMethod:YTKRequestMethodPost
+                                              andRMethod:YTKRequestMethodPOST
                                             andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [self hideHud];

@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 #import "Singleon.h"
-#import "AFHTTPRequestOperationManager.h"
+//#import "AFHTTPRequestOperationManager.h"
+#import "AFHTTPSessionManager.h"
 typedef void(^audioBlock)(NSDictionary *audioDict);
 /**  文件服务器 AppID APPKey*/
 #define FILE_SERVER_APP_ID @"test"

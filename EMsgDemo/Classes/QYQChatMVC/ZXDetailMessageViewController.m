@@ -114,7 +114,7 @@
     NSDictionary *dic = [ZXCommens factionaryParams:@{@"userid":_kUser.uid} WithServerAndMethod:@{@"service":@"user",@"method":@"get_user_info"}];
     [self showHudInView:self.view hint:@"加载中..."];
     ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
-                                              andRMethod:YTKRequestMethodPost
+                                              andRMethod:YTKRequestMethodPOST
                                             andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [self hideHud];
@@ -155,7 +155,7 @@
     NSDictionary *dic = [ZXCommens factionaryParams:@{@"contact_id":_kUser.uid,@"action":@"add"} WithServerAndMethod:@{@"service":@"user",@"method":@"contact"}];
     [self showHudInView:self.view hint:@""];
     ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
-                                              andRMethod:YTKRequestMethodPost
+                                              andRMethod:YTKRequestMethodPOST
                                             andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [self hideHud];

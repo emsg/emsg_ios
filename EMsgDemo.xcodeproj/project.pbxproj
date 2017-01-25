@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3AE2E88FC26E3B2D68BE9042 /* libPods-EMsgDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0374B92730F5DAF05EB9FE7 /* libPods-EMsgDemo.a */; };
 		3E084F1E1C9A520600F823D9 /* UIColor+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E084F1B1C9A520600F823D9 /* UIColor+UIColor.m */; };
 		3E084F1F1C9A520600F823D9 /* Tools_F.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E084F1D1C9A520600F823D9 /* Tools_F.m */; };
 		3E084F2B1C9A523400F823D9 /* ZXRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E084F231C9A523400F823D9 /* ZXRequest.m */; };
@@ -152,11 +153,11 @@
 		3EFFA21E1CA0072E00ED714E /* chat_bottom_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFA21D1CA0072E00ED714E /* chat_bottom_bg@2x.png */; };
 		3EFFA2211CA0074A00ED714E /* ToolViewEmotion@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFA21F1CA0074A00ED714E /* ToolViewEmotion@2x.png */; };
 		3EFFA2221CA0074A00ED714E /* ToolViewEmotion@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 3EFFA2201CA0074A00ED714E /* ToolViewEmotion@3x.png */; };
-		C47A84BE29A1E6F27939C220 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A34098D630DFE650C5F6452 /* libPods.a */; };
+		A49A80131E38838400B29041 /* client.cer in Resources */ = {isa = PBXBuildFile; fileRef = A49A80121E38838400B29041 /* client.cer */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2A34098D630DFE650C5F6452 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		24F71935A0F80C1B6F174231 /* Pods-EMsgDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMsgDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EMsgDemo/Pods-EMsgDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		3E084F181C9A50A900F823D9 /* EMsgDemo.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMsgDemo.pch; sourceTree = "<group>"; };
 		3E084F191C9A518500F823D9 /* EMsgDemoDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMsgDemoDefines.h; sourceTree = "<group>"; };
 		3E084F1A1C9A520600F823D9 /* UIColor+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+UIColor.h"; sourceTree = "<group>"; };
@@ -382,8 +383,9 @@
 		3EFFA21D1CA0072E00ED714E /* chat_bottom_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chat_bottom_bg@2x.png"; sourceTree = "<group>"; };
 		3EFFA21F1CA0074A00ED714E /* ToolViewEmotion@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewEmotion@2x.png"; sourceTree = "<group>"; };
 		3EFFA2201CA0074A00ED714E /* ToolViewEmotion@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ToolViewEmotion@3x.png"; sourceTree = "<group>"; };
-		C31030BEB6E81579470F25D5 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		D095D436247A9D682073F5C4 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		3FE951249CEF6F9D2FF85A7B /* Pods-EMsgDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMsgDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-EMsgDemo/Pods-EMsgDemo.release.xcconfig"; sourceTree = "<group>"; };
+		A49A80121E38838400B29041 /* client.cer */ = {isa = PBXFileReference; lastKnownFileType = file; path = client.cer; sourceTree = "<group>"; };
+		E0374B92730F5DAF05EB9FE7 /* libPods-EMsgDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-EMsgDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,9 +393,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C47A84BE29A1E6F27939C220 /* libPods.a in Frameworks */,
 				3EFFA1CB1C9F927C00ED714E /* libopencore-amrwb.a in Frameworks */,
 				3EFFA1CA1C9F927C00ED714E /* libopencore-amrnb.a in Frameworks */,
+				3AE2E88FC26E3B2D68BE9042 /* libPods-EMsgDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -448,6 +450,7 @@
 		3E084F4A1C9A5DCA00F823D9 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A49A80121E38838400B29041 /* client.cer */,
 				3EA71B551CE2E83100BEAD2C /* refreshAnimations */,
 				3EFFA20F1CA0033E00ED714E /* 120.png */,
 				3EFFA20B1C9FFA1200ED714E /* arrow.png */,
@@ -474,8 +477,8 @@
 			children = (
 				3E91E04C1C992DCD006A0BB0 /* EMsgDemo */,
 				3E91E04B1C992DCD006A0BB0 /* Products */,
-				54F105A7748F955687AAFF64 /* Pods */,
-				F223FE00822AAD8DAA05A8E3 /* Frameworks */,
+				D7C5B2AAE76CE0948A4C2602 /* Pods */,
+				DAA0479154BDE9A31DA5E7D5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -834,19 +837,19 @@
 			path = MySortoingVC;
 			sourceTree = "<group>";
 		};
-		54F105A7748F955687AAFF64 /* Pods */ = {
+		D7C5B2AAE76CE0948A4C2602 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D095D436247A9D682073F5C4 /* Pods.debug.xcconfig */,
-				C31030BEB6E81579470F25D5 /* Pods.release.xcconfig */,
+				24F71935A0F80C1B6F174231 /* Pods-EMsgDemo.debug.xcconfig */,
+				3FE951249CEF6F9D2FF85A7B /* Pods-EMsgDemo.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		F223FE00822AAD8DAA05A8E3 /* Frameworks */ = {
+		DAA0479154BDE9A31DA5E7D5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				2A34098D630DFE650C5F6452 /* libPods.a */,
+				E0374B92730F5DAF05EB9FE7 /* libPods-EMsgDemo.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -858,12 +861,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3E91E0611C992DCD006A0BB0 /* Build configuration list for PBXNativeTarget "EMsgDemo" */;
 			buildPhases = (
-				E7C64459EF505FCA5CCD1839 /* Check Pods Manifest.lock */,
+				E699A633D7FD3A1A5F8C1DD2 /* 📦 Check Pods Manifest.lock */,
 				3E91E0461C992DCD006A0BB0 /* Sources */,
 				3E91E0471C992DCD006A0BB0 /* Frameworks */,
 				3E91E0481C992DCD006A0BB0 /* Resources */,
-				C7D072429A9DFB8B5C3AC8D1 /* Embed Pods Frameworks */,
-				E34D8315A6A906C83D8E0BC3 /* Copy Pods Resources */,
+				2BBF0E7C5B4DC63F7E586C31 /* 📦 Embed Pods Frameworks */,
+				00FD7FEC3B2A210B1C96A72E /* 📦 Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -951,6 +954,7 @@
 				3EFFA1B31C9F921600ED714E /* sharemore_pic_ios7@2x.png in Resources */,
 				3EFFA2211CA0074A00ED714E /* ToolViewEmotion@2x.png in Resources */,
 				3EFFA16C1C9F910200ED714E /* icon_yuyin03@2x.png in Resources */,
+				A49A80131E38838400B29041 /* client.cer in Resources */,
 				3EFFA16D1C9F910200ED714E /* icon_yuyin03@3x.png in Resources */,
 				3EA71B5F1CE2E83100BEAD2C /* ah_1@2x.png in Resources */,
 				3E91E05A1C992DCD006A0BB0 /* Assets.xcassets in Resources */,
@@ -997,44 +1001,44 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		C7D072429A9DFB8B5C3AC8D1 /* Embed Pods Frameworks */ = {
+		00FD7FEC3B2A210B1C96A72E /* 📦 Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "📦 Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EMsgDemo/Pods-EMsgDemo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E34D8315A6A906C83D8E0BC3 /* Copy Pods Resources */ = {
+		2BBF0E7C5B4DC63F7E586C31 /* 📦 Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "📦 Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EMsgDemo/Pods-EMsgDemo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E7C64459EF505FCA5CCD1839 /* Check Pods Manifest.lock */ = {
+		E699A633D7FD3A1A5F8C1DD2 /* 📦 Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "📦 Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1229,7 +1233,7 @@
 		};
 		3E91E0621C992DCD006A0BB0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D095D436247A9D682073F5C4 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 24F71935A0F80C1B6F174231 /* Pods-EMsgDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1253,7 +1257,7 @@
 		};
 		3E91E0631C992DCD006A0BB0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C31030BEB6E81579470F25D5 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 3FE951249CEF6F9D2FF85A7B /* Pods-EMsgDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;

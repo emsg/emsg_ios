@@ -10,6 +10,9 @@
 #import "EMDMainViewController.h"
 #import "EMDLoginViewController.h"
 #import "EMDEngineManger.h"
+#import "ZXRequest.h"
+#import "YTKNetworkConfig.h"
+#import "AFSecurityPolicy.h"
 
 @interface AppDelegate ()
 
@@ -28,6 +31,7 @@
     [self loginStateChange:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginStateChange:) name:LOGIN_STATE object:nil];
     // Override point for customization after application launch.
+    [self configHttps];
     return YES;
 }
 
@@ -210,6 +214,36 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
             }
         }
     }
+}
+
+-(void)configHttps{
+    
+    // 获取证书
+    NSString *cerPath = [[NSBundle mainBundle] pathForResource:@"client" ofType:@"cer"];//证书的路径
+    NSData *certData = [NSData dataWithContentsOfFile:cerPath];
+    
+    // 配置安全模式
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    
+    config.baseUrl = @"https://202.85.214.98";
+    //    config.cdnUrl = @"http://fen.bi";
+    
+    // 验证公钥和证书的其他信息
+    //AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
+    AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
+    
+    // 允许自建证书
+    securityPolicy.allowInvalidCertificates = YES;
+    
+    // 校验域名信息
+    securityPolicy.validatesDomainName      = NO;
+    
+    // 添加服务器证书,单向验证;  可采用双证书 双向验证;
+    NSSet *set = [[NSSet alloc] initWithObjects:certData, nil];
+    securityPolicy.pinnedCertificates = set;
+    
+    [config setSecurityPolicy:securityPolicy];
+    
 }
 
 @end

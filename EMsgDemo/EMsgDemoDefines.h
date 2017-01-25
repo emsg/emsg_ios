@@ -19,7 +19,7 @@
 #import "FMDBManger.h"
 #import "UIView+LayoutMethods.h"
 
-#define Host_Server @"http://180.76.153.246:84/request/"
+#define Host_Server @"https://202.85.214.98/request/"
 #define Server_File_Host @"http://fileserver.lczybj.com/fileserver/get/"
 #define File_Host @"http://fileserver.lczybj.com/fileserver/upload/"
 

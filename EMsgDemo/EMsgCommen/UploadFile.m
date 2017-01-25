@@ -20,7 +20,7 @@ single_implementation(UploadFile)
 - (void)uploadImage:(UIImage *)image
         resultBlock:(void (^)(NSDictionary *))block
          upProgress:(void (^)(float))progressBlock {
-    NSMutableURLRequest *request = [NSMutableURLRequest
+    /*NSMutableURLRequest *request = [NSMutableURLRequest
                                     requestWithURL:[NSURL
                                                     URLWithString:[NSString stringWithFormat:File_Host]]
                                     cachePolicy:NSURLRequestReloadIgnoringLocalCacheData
@@ -36,8 +36,34 @@ single_implementation(UploadFile)
                                                        @"appid" : FILE_SERVER_APP_ID,
                                                        @"appkey" : FILE_SERVER_APP_KEY
                                                        }];
-    }
-    AFHTTPRequestOperation *requstOperation =
+    }*/
+    NSURL *URL = [NSURL URLWithString:File_Host];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    
+    [manager POST:File_Host parameters:nil
+        constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            //上传文件参数
+            UIImage *iamge = [self imageCompressForSize:image targetSize:CGSizeMake(1280, 1280)];
+            NSData *data = [self dataImageWithParams:@{
+                                        @"file" : UIImageJPEGRepresentation(iamge, 0.3),
+                                        @"appid" : FILE_SERVER_APP_ID,
+                                        @"appkey" : FILE_SERVER_APP_KEY
+                                        }];
+            //NSData *data = UIImagePNGRepresentation(iamge);
+            //这个就是参数
+            [formData appendPartWithFileData:data name:@"file" fileName:@"123.png" mimeType:@"image/png"];
+
+        }
+        progress:^(NSProgress * _Nonnull downloadProgress){
+             //上传进度
+            float progress = downloadProgress.completedUnitCount / downloadProgress.totalUnitCount;
+            progressBlock(progress);
+        } success:^(NSURLSessionTask * _Nonnull task, id _Nonnull responseObject) {
+             block(responseObject);
+        } failure:^(NSURLSessionTask * _Nonnull operation, NSError * _Nonnull error) {
+             NSLog(@"Error: %@", error);
+    }];
+    /*AFHTTPRequestOperation *requstOperation =
     [[AFHTTPRequestOperation alloc] initWithRequest:request];
     requstOperation.responseSerializer = [AFJSONResponseSerializer serializer];
     
@@ -57,7 +83,7 @@ single_implementation(UploadFile)
          ((float)totalBytesWritten) / (totalBytesExpectedToWrite);
          progressBlock(progress);
          
-     }];
+     }];*/
     
     //  //下载进度回调
     //  [requstOperation
@@ -68,12 +94,12 @@ single_implementation(UploadFile)
     //        float progress = ((float)totalBytesRead) /
     //        (totalBytesExpectedToRead);
     //      }];
-    [requstOperation start];
+    /*[requstOperation start];*/
 }
 - (void)uploadAudio:(NSString *)dataStr block:(audioBlock)audio
 {
     
-    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    /*AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSData *voiceData = [fileManager contentsAtPath:dataStr];
     NSDictionary *parameters = @{@"appid":FILE_SERVER_APP_ID,@"appkey":FILE_SERVER_APP_KEY,@"file":voiceData,@"file_type":@"amr"};
@@ -88,8 +114,20 @@ single_implementation(UploadFile)
         audio(result);
     } failure:^(AFHTTPRequestOperation *  operation, NSError *  error) {
         
-    }];
+    }];*/
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     
+    [manager POST:File_Host parameters:nil
+        constructingBodyWithBlock:^(id<AFMultipartFormData>  _Nonnull formData) {
+            //上传文件参数
+            NSURL *fileURL = [NSURL fileURLWithPath:dataStr];
+            [formData appendPartWithFileURL:fileURL name:@"file" error:nil];
+        } success:^(NSURLSessionTask * _Nonnull task, id _Nonnull responseObject) {
+            NSMutableDictionary *result = (NSMutableDictionary *)responseObject;
+            audio(result);
+        } failure:^(NSURLSessionTask * _Nonnull operation, NSError * _Nonnull error) {
+            NSLog(@"Error: %@", error);
+        }];
 }
 #pragma mark 图片处理
 

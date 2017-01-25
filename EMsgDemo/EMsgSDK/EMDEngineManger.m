@@ -591,12 +591,12 @@ didConnectToHost:(NSString *)host
 - (void)sendHeartPacket {
     [self stopHeartPacket];
     hearttimer =
-    [NSTimer scheduledTimerWithTimeInterval:HEART_BEAT_FREQ
+    [NSTimer timerWithTimeInterval:HEART_BEAT_FREQ
                                      target:self
                                    selector:@selector(sendConnectHeart)
                                    userInfo:nil
                                     repeats:YES];
-    [[NSRunLoop currentRunLoop] addTimer:hearttimer forMode:NSRunLoopCommonModes];
+    [[NSRunLoop mainRunLoop] addTimer:hearttimer forMode:NSRunLoopCommonModes];
 }
 
 - (void)stopHeartPacket {

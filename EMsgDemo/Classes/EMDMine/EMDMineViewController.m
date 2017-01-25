@@ -149,7 +149,7 @@
     NSDictionary * dic = [ZXCommens factionaryParams:@{} WithServerAndMethod:@{@"service":@"user",@"method":@"logout"}];
     ZXWeakSelf;
     ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
-                                              andRMethod:YTKRequestMethodPost
+                                              andRMethod:YTKRequestMethodPOST
                                             andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [__weakSelf hideHud];

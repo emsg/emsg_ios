@@ -54,7 +54,8 @@
     NSDictionary *dic = [[NSDictionary alloc] init];
     dic = [ZXCommens factionaryParams:@{@"username":_usernameTextField.text,@"password":_passwordTextField.text,@"device_token":deviceToken ? deviceToken : @""} WithServerAndMethod:@{@"service":@"user",@"method":@"login"}];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
-    ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPost andRArgument:dic];
+    ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPOST andRArgument:dic];
+    
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         if ([request.responseJSONObject[@"success"] integerValue] == 1) {
@@ -75,6 +76,7 @@
     } failure:^(YTKBaseRequest *request) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
         [MBProgressHUD showError:@"网络好像出了问题" toView:nil];
+        NSLog(@"requestOperationError == %@",request.error);
     }];
 
 }

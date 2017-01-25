@@ -53,10 +53,12 @@
     NSString * action = @"list";
     dic = [ZXCommens factionaryParams:@{@"action":action} WithServerAndMethod:@{@"service":@"user",@"method":@"contact"}];
     ZXContactListRequest *request = [[ZXContactListRequest alloc] initWithRUrl:Host_Server
-                                                                    andRMethod:YTKRequestMethodPost
+                                                                    andRMethod:YTKRequestMethodPOST
                                                                   andRArgument:dic];
-    if ([request cacheJson]) {
-        NSDictionary *json = [request cacheJson];
+    //if ([request cacheJson]) {
+    if ([request loadCacheWithError:nil]){
+        //NSDictionary *json = [request cacheJson];
+        NSDictionary *json = [request responseJSONObject];
         if ([json[@"success"] integerValue] == 1) {
             NSArray * jsonArray = json[@"entity"][@"contacts"];
             [_listDatas removeAllObjects];
@@ -437,7 +439,7 @@ canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     [self showHudInView:self.view hint:@""];
     
     ZXRequest *request = [[ZXRequest alloc] initWithRUrl:Host_Server
-                                              andRMethod:YTKRequestMethodPost
+                                              andRMethod:YTKRequestMethodPOST
                                             andRArgument:dic];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [self hideHud];

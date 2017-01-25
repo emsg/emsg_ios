@@ -109,7 +109,7 @@
     NSString * deviceToken = [ZXCommens fetchDeviceToken];
     dic = [ZXCommens factionaryParams:@{@"username":_usernameTextField.text,@"password":_passwordTextField.text,@"email":_emailTextField.text,@"nickname":_nickNameTextField.text,@"gender":_sexButton.titleLabel.text,@"birthday":self.birthdayButton.titleLabel.text} WithServerAndMethod:@{@"service":@"user",@"method":@"register",@"device_token":deviceToken?deviceToken : @""}];
     [self showHudInView:self.view hint:nil];
-    ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPost andRArgument:dic];
+    ZXRequest * request = [[ZXRequest alloc] initWithRUrl:Host_Server andRMethod:YTKRequestMethodPOST andRArgument:dic];
     [MBProgressHUD showHUDAddedTo:self.view animated:YES];
     [request startWithCompletionBlockWithSuccess:^(YTKBaseRequest *request) {
         [MBProgressHUD hideAllHUDsForView:self.view animated:YES];
