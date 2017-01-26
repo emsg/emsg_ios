@@ -11,6 +11,7 @@
 #define HEART_BEAT @"\02\01"
 
 #define SERVER_KILL @"\03\01"
+#define SERVER_KILL_TAG @"\03"
 
 #define MSG_TYPE_OPEN_SESSION 0
 #define MSG_TYPE_CHAT 1

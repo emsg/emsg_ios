@@ -356,21 +356,27 @@ didConnectToHost:(NSString *)host
         // 检测末尾字符串是否含有END_TAG
         BOOL isHasNoEndPacket = NO;
         if (buffMsg.length >= 3) {
-            NSString * endString = [buffMsg substringFromIndex:buffMsg.length - 3];
+            NSString * endString = [buffMsg substringFromIndex:buffMsg.length - 1];
             if ([endString isEqualToString:END_TAG]) {
-                isHasNoEndPacket = YES;
-            }
+                //isHasNoEndPacket = YES;
+                buffData = nil;//1-26-2017 fix bug by zq(long page with no endTag or multi-page with no endTag) start
+            } else {//1-26-2017 fix bug by zq(long page with no endTag or multi-page with no endTag) start
+                buffData = nil;
+                NSString *lastDataStr = buffArray.lastObject;
+                NSData *jsonData = [lastDataStr dataUsingEncoding:NSUTF8StringEncoding];
+                [buffData appendData:jsonData];
+            }//fix end
         }
         
         @autoreleasepool {
             for (NSString *msgString in buffArray) {
                 
-                if (msgString == buffArray.lastObject) {
-                    [weakSelf packetFactory:msgString hasNoEndPacket:isHasNoEndPacket];
-                }
+                //if (msgString == buffArray.lastObject) {
+                [weakSelf packetFactory:msgString hasNoEndPacket:isHasNoEndPacket];
+                /*}
                 else{
                     [weakSelf packetFactory:msgString hasNoEndPacket:NO];
-                }
+                }*/
             }
         }
     });
@@ -379,29 +385,29 @@ didConnectToHost:(NSString *)host
 // 加工packet
 - (void)packetFactory:(NSString *)packetString hasNoEndPacket:(BOOL)hasNoEnd{
     
-    if (!hasNoEnd) {
-        buffData = nil;
-        NSRange foundkill =
-        [packetString rangeOfString:SERVER_KILL options:NSBackwardsSearch];
-        NSRange foundHeart =
-        [packetString rangeOfString:HEART_BEAT options:NSBackwardsSearch];
-        if (foundkill.location != NSNotFound) {
-            [self packetToMssage:PACKET_KILL andPacketString:packetString];
-        } else if (foundHeart.location != NSNotFound) {
-            [self packetToMssage:PACKET_HEART andPacketString:packetString];
-        }
-        NSDictionary *dic = [packetString mj_JSONObject];
-        if ([dic isKindOfClass:[NSDictionary class]]) {
-            [self packetToMssage:PACKET_END andPacketString:packetString];
-        }
+    //if (!hasNoEnd) {//1-26-2017 fix bug by zq(long page with no endTag or multi-page with no endTag)
+        //buffData = nil;//1-26-2017 fix bug by zq(long page with no endTag or multi-page with no endTag)
+    NSRange foundkill =
+    [packetString rangeOfString:SERVER_KILL_TAG options:NSBackwardsSearch];
+    NSRange foundHeart =
+    [packetString rangeOfString:HEART_BEAT options:NSBackwardsSearch];
+    if (foundkill.location != NSNotFound) {
+        [self packetToMssage:PACKET_KILL andPacketString:packetString];
+    } else if (foundHeart.location != NSNotFound) {
+        [self packetToMssage:PACKET_HEART andPacketString:packetString];
     }
+    NSDictionary *dic = [packetString mj_JSONObject];
+    if ([dic isKindOfClass:[NSDictionary class]]) {
+        [self packetToMssage:PACKET_END andPacketString:packetString];
+    }
+    /*}//1-26-2017 fix bug by zq(long page with no endTag or multi-page with no endTag)
     else{
         if (buffData == nil) {
             buffData = [[NSMutableData alloc] initWithCapacity:1];
         }
         NSData *jsonData = [packetString dataUsingEncoding:NSUTF8StringEncoding];
         [buffData appendData:jsonData];
-    }
+    }*/
 }
 
 - (void)packetToMssage:(PacketType)pakcetType andPacketString:(NSString *)packetString{
