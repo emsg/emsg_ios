@@ -184,7 +184,6 @@ didConnectToHost:(NSString *)host
 - (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag{
     
     [sock readDataWithTimeout:-1 tag:0];
-   
     [self asyncPreDispatchPacket:data];
 }
 
@@ -355,8 +354,9 @@ didConnectToHost:(NSString *)host
         
         // 检测末尾字符串是否含有END_TAG
         BOOL isHasNoEndPacket = NO;
-        if (buffMsg.length >= 3) {
-            NSString * endString = [buffMsg substringFromIndex:buffMsg.length - 1];
+        //NSLog(@"getMsg:%@",buffMsg);
+        if (buffMsg.length >= 2) {//当数据长度大于等于2（心跳、强制下线为2）为收到数据
+            NSString * endString = [buffMsg substringFromIndex:buffMsg.length - 1];//截取最后一个字符 查看是否为结束符
             if ([endString isEqualToString:END_TAG]) {
                 //isHasNoEndPacket = YES;
                 buffData = nil;//1-26-2017 fix bug by zq(long page with no endTag or multi-page with no endTag) start

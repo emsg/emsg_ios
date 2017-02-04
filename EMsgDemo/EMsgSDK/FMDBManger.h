@@ -16,8 +16,9 @@ typedef void(^resultCount)(NSInteger count);
 
 @interface FMDBManger : NSObject
 + (instancetype)shareInstance;
-@property(nonatomic, strong) FMDatabase *db;
-@property(nonatomic, strong) NSString *database_path;
+//@property(nonatomic, strong) FMDatabase *db;
+//@property(nonatomic, strong) NSString *database_path;
+@property(nonatomic,strong) FMDatabaseQueue *queue;
 
 
 /**聊天记录 表*/
