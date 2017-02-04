@@ -45,6 +45,7 @@ static FMDBManger *_sharedFMDBManger = nil;
         _queue = [FMDatabaseQueue databaseQueueWithPath:dbFilePath];
         
         [self createChatHistoryTable];
+        [self createChatListTable];
     }
     return self;
 }
