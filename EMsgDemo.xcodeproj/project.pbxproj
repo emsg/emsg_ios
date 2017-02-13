@@ -1238,6 +1238,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yong chen (4TJ6MKQYR4)";
+				DEVELOPMENT_TEAM = 58Z5LGMHU6;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EMsgDemo/EMsgDemo.pch";
@@ -1249,9 +1250,10 @@
 					"$(PROJECT_DIR)/EMsgDemo/Classes/QYQChatMVC/VoiceConvert/lib",
 					"$(PROJECT_DIR)/EMsgDemo/EMsgThirdPart/VoiceConvert/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.longcai.emsg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hawk.emsg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "d1f875f9-b94d-41b4-b855-e23681e82457";
+				PROVISIONING_PROFILE = "57bdb9fa-432d-41b5-a21c-125797318065";
+				PROVISIONING_PROFILE_SPECIFIER = fe;
 			};
 			name = Debug;
 		};
@@ -1272,7 +1274,7 @@
 					"$(PROJECT_DIR)/EMsgDemo/Classes/QYQChatMVC/VoiceConvert/lib",
 					"$(PROJECT_DIR)/EMsgDemo/EMsgThirdPart/VoiceConvert/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.longcai.emsg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hawk.emsg;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
