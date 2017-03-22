@@ -1,4 +1,4 @@
-#<center>EMSG_Official_Demo
+#EMSG_Official_Demo
 
 #####这是什么
 	一个简单完整的IM Demo，用来演示如何在应用中集成 EMSG_SDK
