@@ -7,8 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "EMDMainViewController.h"
-#import "EMDLoginViewController.h"
+#import "EMMainViewController.h"
+#import "EMLoginViewController.h"
 #import "EMDEngineManger.h"
 #import "ZXRequest.h"
 #import "YTKNetworkConfig.h"
@@ -46,22 +46,22 @@
 - (void)loginStateChange:(NSNotification *)notification{
     if (notification == nil) {
         if ([ZXCommens isLogin]) {
-            EMDMainViewController * mainVC = [[EMDMainViewController alloc] init];
+            EMMainViewController * mainVC = [[EMMainViewController alloc] init];
             self.window.rootViewController = mainVC;
         }
         else{
-            self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[EMDLoginViewController alloc] init]];
+            self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[EMLoginViewController alloc] init]];
         }
         return ;
     }
     BOOL isState = [notification.object boolValue];
     [ZXCommens putLoginState:isState];
     if (isState) {
-        EMDMainViewController * mainVC = [[EMDMainViewController alloc] init];
+        EMMainViewController * mainVC = [[EMMainViewController alloc] init];
         self.window.rootViewController = mainVC;
     }
     else{
-        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[EMDLoginViewController alloc] init]];
+        self.window.rootViewController = [[UINavigationController alloc] initWithRootViewController:[[EMLoginViewController alloc] init]];
     }
 }
 
@@ -223,13 +223,12 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     NSData *certData = [NSData dataWithContentsOfFile:cerPath];
     
     // 配置安全模式
-    YTKNetworkConfig *config = [YTKNetworkConfig sharedConfig];
+    YTKNetworkConfig *config = [YTKNetworkConfig sharedInstance];
     
     config.baseUrl = @"https://202.85.214.98";
     //    config.cdnUrl = @"http://fen.bi";
     
     // 验证公钥和证书的其他信息
-    //AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeNone];
     AFSecurityPolicy *securityPolicy = [AFSecurityPolicy policyWithPinningMode:AFSSLPinningModeCertificate];
     
     // 允许自建证书
@@ -239,8 +238,7 @@ didReceiveLocalNotification:(UILocalNotification *)notification {
     securityPolicy.validatesDomainName      = NO;
     
     // 添加服务器证书,单向验证;  可采用双证书 双向验证;
-    NSSet *set = [[NSSet alloc] initWithObjects:certData, nil];
-    securityPolicy.pinnedCertificates = set;
+    securityPolicy.pinnedCertificates = @[certData];
     
     [config setSecurityPolicy:securityPolicy];
     
