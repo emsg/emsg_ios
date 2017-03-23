@@ -118,7 +118,7 @@ didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
                           delegate:nil
                           cancelButtonTitle:NSLocalizedString(@"ok", @"OK")
                           otherButtonTitles:nil];
-    [alert show];
+//    [alert show];
 }
 
 // 注册APNs的方法

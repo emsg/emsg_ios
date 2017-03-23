@@ -74,6 +74,8 @@
 		1824E1FF1E821C0600754EE5 /* EMsgPayload.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824E1D01E821C0500754EE5 /* EMsgPayload.m */; };
 		1824E2001E821C0600754EE5 /* FMDBManger.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824E1D21E821C0500754EE5 /* FMDBManger.m */; };
 		1824E2021E821C0600754EE5 /* UploadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = 1824E1D71E821C0500754EE5 /* UploadFile.m */; };
+		18EFE1F91E83BDA3007F0745 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 18EFE1F71E83BDA3007F0745 /* LoginViewController.m */; };
+		18EFE1FA1E83BDA3007F0745 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 18EFE1F81E83BDA3007F0745 /* LoginViewController.xib */; };
 		3AE2E88FC26E3B2D68BE9042 /* libPods-EMsgDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E0374B92730F5DAF05EB9FE7 /* libPods-EMsgDemo.a */; };
 		3E084F3D1C9A57CE00F823D9 /* EMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E084F3C1C9A57CE00F823D9 /* EMMainViewController.m */; };
 		3E084F661C9A87E800F823D9 /* EMLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3E084F641C9A87E800F823D9 /* EMLoginViewController.m */; };
@@ -292,6 +294,9 @@
 		1824E1D51E821C0500754EE5 /* Singleon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Singleon.h; sourceTree = "<group>"; };
 		1824E1D61E821C0500754EE5 /* UploadFile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UploadFile.h; sourceTree = "<group>"; };
 		1824E1D71E821C0500754EE5 /* UploadFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UploadFile.m; sourceTree = "<group>"; };
+		18EFE1F61E83BDA3007F0745 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		18EFE1F71E83BDA3007F0745 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		18EFE1F81E83BDA3007F0745 /* LoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		24F71935A0F80C1B6F174231 /* Pods-EMsgDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EMsgDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EMsgDemo/Pods-EMsgDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		3E084F181C9A50A900F823D9 /* EMsgDemo.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMsgDemo.pch; sourceTree = "<group>"; };
 		3E084F191C9A518500F823D9 /* EMsgDemoDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMsgDemoDefines.h; sourceTree = "<group>"; };
@@ -700,6 +705,9 @@
 				3E91E0511C992DCD006A0BB0 /* AppDelegate.m */,
 				3E084F3B1C9A57CE00F823D9 /* EMMainViewController.h */,
 				3E084F3C1C9A57CE00F823D9 /* EMMainViewController.m */,
+				18EFE1F61E83BDA3007F0745 /* LoginViewController.h */,
+				18EFE1F71E83BDA3007F0745 /* LoginViewController.m */,
+				18EFE1F81E83BDA3007F0745 /* LoginViewController.xib */,
 				3E084F631C9A87E800F823D9 /* EMLoginViewController.h */,
 				3E084F641C9A87E800F823D9 /* EMLoginViewController.m */,
 				3E084F651C9A87E800F823D9 /* EMLoginViewController.xib */,
@@ -868,7 +876,8 @@
 				TargetAttributes = {
 					3E91E0491C992DCD006A0BB0 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = 58Z5LGMHU6;
+						DevelopmentTeam = TQHAZ76T65;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.Push = {
 								enabled = 0;
@@ -962,6 +971,7 @@
 				3EFFA1B91C9F921600ED714E /* TypeSelectorBtn_Black_ios7@2x.png in Resources */,
 				3EFFA1761C9F910200ED714E /* icon_yuyin08@2x.png in Resources */,
 				3EFFA2101CA0033E00ED714E /* 120.png in Resources */,
+				18EFE1FA1E83BDA3007F0745 /* LoginViewController.xib in Resources */,
 				3EFFA1751C9F910200ED714E /* icon_yuyin07@3x.png in Resources */,
 				3EDF82F01C9BB62A00C52F59 /* EMRegisterViewController.xib in Resources */,
 				3EFFA1AB1C9F921600ED714E /* chat_animation_white2.png in Resources */,
@@ -1078,6 +1088,7 @@
 				3E91E0521C992DCD006A0BB0 /* AppDelegate.m in Sources */,
 				1824E1D81E821C0500754EE5 /* BrowserUIImageView.m in Sources */,
 				1824E1621E821B9B00754EE5 /* QYQChatCell.m in Sources */,
+				18EFE1F91E83BDA3007F0745 /* LoginViewController.m in Sources */,
 				1824E1721E821B9B00754EE5 /* ZXWebContainViewController.m in Sources */,
 				1824E1681E821B9B00754EE5 /* ZBFaceView.m in Sources */,
 				1824E1591E821B9B00754EE5 /* EMDAddFriendTableViewCell.m in Sources */,
@@ -1196,7 +1207,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer: yong chen (4TJ6MKQYR4)";
-				DEVELOPMENT_TEAM = 58Z5LGMHU6;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = TQHAZ76T65;
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EMsgDemo/EMsgDemo.pch";
@@ -1209,10 +1221,10 @@
 					"$(PROJECT_DIR)/EMsgDemo/EMsgThirdPart/VoiceConvert/lib",
 					"$(PROJECT_DIR)/EMsgDemo/EM3rdPart/VoiceConvert/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hawk.emsg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hawk.aaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "57bdb9fa-432d-41b5-a21c-125797318065";
-				PROVISIONING_PROFILE_SPECIFIER = fe;
+				PROVISIONING_PROFILE = "b07e1566-769c-44b6-8860-8e83a4061e21";
+				PROVISIONING_PROFILE_SPECIFIER = HawkTestGroupDevProfile;
 			};
 			name = Debug;
 		};
@@ -1222,6 +1234,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/EMsgDemo/EMsgDemo.pch";
@@ -1234,7 +1248,7 @@
 					"$(PROJECT_DIR)/EMsgDemo/EMsgThirdPart/VoiceConvert/lib",
 					"$(PROJECT_DIR)/EMsgDemo/EM3rdPart/VoiceConvert/lib",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.hawk.emsg;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hawk.aaa;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
